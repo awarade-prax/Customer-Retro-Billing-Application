@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: retrobillingapp
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertErrors: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /sap
+            url: https://my430904-api.s4hana.cloud.sap
+            client: '100'
+            destination: STD_DEST_CUST_APP
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        flp:
+          theme: sap_fiori_3_dark
+        test:
+          - framework: OPA5
+            path: /test/integration/opaTests.qunit.html
+            pattern: /test/**/*Journey.*
+          - framework: Testsuite
+          - framework: QUnit
+            path: /test/unit/unitTests.qunit.html
+            pattern: /test/unit/controller/*.{js,ts}
+    - name: ui5-tooling-transpile-middleware
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        transformModulesToUI5:
+          overridesToOverride: true
+        excludePatterns:
+          - /Component-preload.js
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/Z_RETRO_BILL_SCRN_SRV_BIND
+            metadataPath: ./webapp/localService/mainService/metadata.xml
+            mockdataPath: ./webapp/localService/mainService/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/API_SLSPRICINGCONDITIONRECORD_SRV
+            metadataPath: ./webapp/localService/pricingConditionService/metadata.xml
+            mockdataPath: ./webapp/localService/pricingConditionService/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV
+            metadataPath: ./webapp/localService/creditMemoRequestService/metadata.xml
+            mockdataPath: ./webapp/localService/creditMemoRequestService/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/API_DEBIT_MEMO_REQUEST_SRV
+            metadataPath: ./webapp/localService/debitMemoRequestService/metadata.xml
+            mockdataPath: ./webapp/localService/debitMemoRequestService/data
+            generateMockData: true
+        annotations: []
+builder:
+  customTasks:
+    - name: ui5-tooling-transpile-task
+      afterTask: replaceVersion
+      configuration:
+        debug: true
+        transformModulesToUI5:
+          overridesToOverride: true
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**

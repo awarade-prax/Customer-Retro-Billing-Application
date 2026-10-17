@@ -1,0 +1,160 @@
+<mvc:View
+    id="retrobillingappView"
+    controllerName="retrobillingapp.controller.retrobillingapp"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    displayBlock="true"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+        enableScrolling="false"
+    >
+        <content>
+            <VBox
+                id="mainVBox"
+                fitContainer="true"
+                renderType="Bare"
+            >
+                <smartFilterBar:SmartFilterBar
+                    id="smartFilterBar"
+                    entitySet="RetroBillScreen1"
+                    persistencyKey="retrobillingapp-smartFilterBar"
+                    enableBasicSearch="false"
+                    showGoOnFB="true"
+                    liveMode="false"
+                    search="onFilterBarSearch"
+                >
+                    <smartFilterBar:controlConfiguration>
+                        <smartFilterBar:ControlConfiguration
+                            id="ccBillToPartyCode"
+                            key="BillToPartyCode"
+                            index="0"
+                            label="Payer (Bill to)"
+                            visible="true"
+                            visibleInAdvancedArea="true"
+                            mandatory="mandatory"
+                        />
+
+                        <smartFilterBar:ControlConfiguration
+                            id="ccShipToPartyCode"
+                            key="ShipToPartyCode"
+                            index="1"
+                            label="Ship-To-Party"
+                            visible="true"
+                            visibleInAdvancedArea="true"
+                        />
+
+                        <smartFilterBar:ControlConfiguration
+                            id="ccSalesOrganization"
+                            key="SalesOrganization"
+                            index="2"
+                            label="Sales Organization"
+                            visible="true"
+                            visibleInAdvancedArea="true"
+                            mandatory="mandatory"
+                        />
+
+                        <smartFilterBar:ControlConfiguration
+                            id="ccPlant"
+                            key="Plant"
+                            index="3"
+                            label="{i18n>filterPlant}"
+                            visible="true"
+                            visibleInAdvancedArea="true"
+                        />
+
+                        <smartFilterBar:ControlConfiguration
+                            id="ccMaterialCode"
+                            key="MaterialCode"
+                            index="6"
+                            label="{i18n>filterMaterialCode}"
+                            visible="true"
+                            visibleInAdvancedArea="true"
+                        />
+                    </smartFilterBar:controlConfiguration>
+
+                    <smartFilterBar:filterGroupItems>
+                        <core:Fragment
+                            fragmentName="retrobillingapp.view.fragments.BillingDateRangeFilters"
+                            type="XML"
+                        />
+                    </smartFilterBar:filterGroupItems>
+                </smartFilterBar:SmartFilterBar>
+
+                <HBox
+                    id="customFilterRow"
+                    wrap="Wrap"
+                    class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom"
+                >
+                    <!-- Value helps are provided by the SmartFilterBar annotations/controlConfiguration -->
+
+                    <VBox
+                        id="vbSplitMaterialWise"
+                        class="sapUiTinyMarginEnd sapUiSmallMarginTop"
+                        justifyContent="End"
+                    >
+                        <CheckBox
+                            id="customSplitMaterialWise"
+                            text="{i18n>filterSplitMaterialWise}"
+                            selected="{filterModel>/splitMaterialWise}"
+                        />
+                    </VBox>
+
+                    <VBox
+                        id="vbSplitPurchaseOrderWise"
+                        class="sapUiTinyMarginEnd sapUiSmallMarginTop"
+                        justifyContent="End"
+                    >
+                        <CheckBox
+                            id="customSplitPurchaseOrderWise"
+                            text="{i18n>filterSplitPurchaseOrderWise}"
+                            selected="{filterModel>/splitPurchaseOrderWise}"
+                        />
+                    </VBox>
+                </HBox>
+
+                <smartTable:SmartTable
+                    id="smartTable"
+                    entitySet="RetroBillScreen1"
+                    smartFilterId="smartFilterBar"
+                    tableType="Table"
+                    header="{i18n>tableHeader}"
+                    showRowCount="false"
+                    enableAutoColumnWidth="true"
+                    useVariantManagement="false"
+                    enableExport="true"
+                    height="100%"
+                    initiallyVisibleFields="ParentBillingDocument,CustomerPONumber,Plant,MaterialCode,MaterialDescription,CustomerMaterialCode,CustomerMaterialName,BillToPartyCode,BillToPartyName,ShipToPartyCode,ShipToPartyName,BillingDocument,ODNNumber,BillingDocumentItem,BillingType,BillingDate,CRDRNumber,BillingQuantity,OriginalRate,OriginalDiscount,OriginalDiscountAmount,ItemNetValue,ItemNetValueTotal"
+                    requestAtLeastFields="ParentBillingDocument,CustomerPONumber,Plant,MaterialCode,MaterialDescription,
+                    CustomerMaterialCode,CustomerMaterialName,BillingDocument,BillingDocumentItem,
+                    ODNNumber,BillingType,SalesOrganization,CRDRNumber,BillToPartyCode,BillToPartyName,ShipToPartyCode,
+                    ShipToPartyName,BillingDate,BillingQuantity,OriginalRate,OriginalDiscount,OriginalDiscountAmount,
+                    ItemNetValue,ItemNetValueTotal"
+                    class="sapUiSmallMarginTop"
+                    beforeRebindTable="onBeforeRebindTable"
+                    initialise="onSmartTableInitialise"
+                >
+                    <smartTable:customToolbar>
+                        <OverflowToolbar id="tableToolbar">
+                            <Title
+                                id="tableTitle"
+                                level="H2"
+                            />
+                            <ToolbarSpacer id="tableToolbarSpacer" />
+                            <Button
+                                id="btnPostCrDr"
+                                text="Process"
+                                type="Success"
+                                press="onPostCrDr"
+                            />
+                        </OverflowToolbar>
+                    </smartTable:customToolbar>
+                </smartTable:SmartTable>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

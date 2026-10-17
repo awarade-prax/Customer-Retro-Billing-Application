@@ -1,0 +1,1737 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="API_CREDIT_MEMO_REQUEST_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="A_CrdMmReqItemSubsqntProcFlowType" sap:label="Item Subsequent Process Flow" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditMemoRequest"/>
+                    <PropertyRef Name="CreditMemoRequestItem"/>
+                    <PropertyRef Name="DocRelationshipUUID"/>
+                </Key>
+                <Property Name="CreditMemoRequest" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Preceding Document" sap:quickinfo="Preceding sales and distribution document"/>
+                <Property Name="CreditMemoRequestItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Preceding Item" sap:quickinfo="Preceding Item of an SD Document"/>
+                <Property Name="DocRelationshipUUID" Type="Edm.Guid" Nullable="false" sap:label="DocRelationshipUUID" sap:quickinfo="SD Unique Document Relationship Identification"/>
+                <Property Name="SubsequentDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Subsequent Document" sap:quickinfo="Subsequent Sales and Distribution Document"/>
+                <Property Name="SubsequentDocumentItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Subsequent Item" sap:quickinfo="Subsequent Item of an SD Document"/>
+                <Property Name="SubsequentDocumentCategory" Type="Edm.String" MaxLength="4" sap:label="Subsequent Doc. Cat." sap:quickinfo="Document Category of Subsequent Document"/>
+                <Property Name="ProcessFlowLevel" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Level" sap:quickinfo="Level of the document flow record"/>
+                <Property Name="AccountingTransferStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Posting Status" sap:quickinfo="Status for Transfer to Accounting" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SDProcessStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Overall Status" sap:quickinfo="Overall Processing Status (Item)" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RelatedProcFlowDocStsFieldName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Field Name" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SubsqntDocItmPrecdgDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Preceding Document" sap:quickinfo="Preceding sales and distribution document"/>
+                <Property Name="SubsqntDocItmPrecdgDocItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Preceding Item" sap:quickinfo="Preceding Item of an SD Document"/>
+                <Property Name="SubsqntDocItmPrecdgDocCategory" Type="Edm.String" MaxLength="4" sap:label="Preceding Doc.Categ." sap:quickinfo="SD Document Category of Reference SD Document"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Creation Date"/>
+                <Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:label="Time" sap:quickinfo="Entry time"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Changed On"/>
+                <NavigationProperty Name="to_CreditMemoRequest" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_9523755F713DCB197998237B0AA34F56" FromRole="FromRole_assoc_9523755F713DCB197998237B0AA34F56" ToRole="ToRole_assoc_9523755F713DCB197998237B0AA34F56"/>
+                <NavigationProperty Name="to_CreditMemoRequestItem" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_6FBC4316F00A43EC3B732CDA45234C45" FromRole="FromRole_assoc_6FBC4316F00A43EC3B732CDA45234C45" ToRole="ToRole_assoc_6FBC4316F00A43EC3B732CDA45234C45"/>
+            </EntityType>
+            <EntityType Name="A_CreditMemoReqItemPartnerType" sap:label="Item Partner" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditMemoRequest"/>
+                    <PropertyRef Name="CreditMemoRequestItem"/>
+                    <PropertyRef Name="PartnerFunction"/>
+                </Key>
+                <Property Name="CreditMemoRequest" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="SD Document" sap:quickinfo="Sales and Distribution Document Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreditMemoRequestItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Item (SD)" sap:quickinfo="Item number of the SD document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PartnerFunction" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Partner Function"/>
+                <Property Name="PartnerFunctionInternalCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Partner Function" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="Personnel" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="ContactPerson" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Contact Person" sap:quickinfo="Number of Contact Person"/>
+                <Property Name="ReferenceBusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_CreditMemoRequest" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_00371EA4CD17DC06C27CE803445E5732" FromRole="FromRole_assoc_00371EA4CD17DC06C27CE803445E5732" ToRole="ToRole_assoc_00371EA4CD17DC06C27CE803445E5732"/>
+                <NavigationProperty Name="to_CreditMemoRequestItem" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_749AE5630DD8B949AE636A242410823C" FromRole="FromRole_assoc_749AE5630DD8B949AE636A242410823C" ToRole="ToRole_assoc_749AE5630DD8B949AE636A242410823C"/>
+            </EntityType>
+            <EntityType Name="A_CreditMemoReqItemPrcgElmntType" sap:label="Item Pricing Element" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditMemoRequest"/>
+                    <PropertyRef Name="CreditMemoRequestItem"/>
+                    <PropertyRef Name="PricingProcedureStep"/>
+                    <PropertyRef Name="PricingProcedureCounter"/>
+                </Key>
+                <Property Name="CreditMemoRequest" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreditMemoRequestItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Condition item number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PricingProcedureStep" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="NonNegative" sap:label="Step Number"/>
+                <Property Name="PricingProcedureCounter" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Condition Counter"/>
+                <Property Name="ConditionApplication" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Application" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="PricingDateTime" Type="Edm.String" MaxLength="14" sap:display-format="UpperCase" sap:label="Valid From" sap:quickinfo="Timestamp for Pricing" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PriceConditionDeterminationDte" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Condition Pricing Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionCalculationType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Calculation Type" sap:quickinfo="Calculation Type for Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionBaseValue" Type="Edm.Decimal" Precision="24" Scale="9" sap:label="Condition Basis" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionRateValue" Type="Edm.Decimal" Precision="24" Scale="9" sap:label="Amount" sap:quickinfo="Condition Amount or Percentage"/>
+                <Property Name="ConditionCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="ConditionQuantity" Type="Edm.Decimal" Precision="5" Scale="0" sap:unit="ConditionQuantitySAPUnit" sap:label="Pricing Unit" sap:quickinfo="Condition Pricing Unit"/>
+                <Property Name="ConditionQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Condition Unit" sap:quickinfo="Condition Unit in the Document" sap:semantics="unit-of-measure"/>
+                <Property Name="ConditionQuantitySAPUnit" Type="Edm.String" MaxLength="3" sap:label="SAP Condition Qty" sap:quickinfo="SAP Unit Code for Condition Quantity" sap:semantics="unit-of-measure"/>
+                <Property Name="ConditionQuantityISOUnit" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Condition Qty" sap:quickinfo="ISO Unit Code for Condition Quantity"/>
+                <Property Name="ConditionToBaseQtyNmrtr" Type="Edm.Decimal" Precision="10" Scale="0" sap:label="Numerator" sap:quickinfo="Numerator for Converting to Base UoM" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionToBaseQtyDnmntr" Type="Edm.Decimal" Precision="10" Scale="0" sap:label="Denominator" sap:quickinfo="Denominator for Converting to Base UoM" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionCategory" Type="Edm.String" MaxLength="1" sap:label="Condition Category" sap:quickinfo="Condition Category (Examples: Tax, Freight, Price, Cost)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionIsForStatistics" Type="Edm.Boolean" sap:label="Statistical" sap:quickinfo="Condition is used for statistics" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PricingScaleType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Scale Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsRelevantForAccrual" Type="Edm.Boolean" sap:label="Accruals" sap:quickinfo="Condition is Relevant for Accrual  (e.g. Freight)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CndnIsRelevantForInvoiceList" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Invoice List Cond." sap:quickinfo="Condition for Invoice List" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionOrigin" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Condition Origin" sap:quickinfo="Origin of the Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsGroupCondition" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Group Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsGroupCondition_2" Type="Edm.Boolean" sap:label="Is Group Condition" sap:quickinfo="Condition Is a Group Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="AccessNumberOfAccessSequence" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Access" sap:quickinfo="Access sequence - Access number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionRecord" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Condition Record No." sap:quickinfo="Number of Condition Record" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionSequentialNumber" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Sequent.No. of Cond." sap:quickinfo="Sequential Number of the Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Code" sap:quickinfo="Tax on Sales/Purchases Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WithholdingTaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="W/Tax Code" sap:quickinfo="Withholding Tax Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CndnRoundingOffDiffAmount" Type="Edm.Decimal" Precision="6" Scale="3" sap:unit="TransactionCurrency" sap:label="Condition Rounding Difference" sap:quickinfo="Rounding-Off Difference of a Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="TransactionCurrency" sap:label="Condition Value" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <Property Name="ConditionControl" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Condition Control" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionInactiveReason" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Inactive Condition" sap:quickinfo="Condition is Inactive" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionClass" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Condition Class" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PrcgProcedureCounterForHeader" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Condition Counter (Header)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FactorForConditionBasisValue" Type="Edm.Double" sap:label="Condition Factor" sap:quickinfo="Factor for Condition Base Value" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="StructureCondition" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Structure Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PeriodFactorForCndnBasisValue" Type="Edm.Double" sap:label="Condition Factor" sap:quickinfo="Factor for Condition Basis (Period)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PricingScaleBasis" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Scale Basis" sap:quickinfo="Scale Basis Indicator" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionScaleBasisValue" Type="Edm.Decimal" Precision="24" Scale="9" sap:label="Scale Base Val." sap:quickinfo="Scale Base Value" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionScaleBasisUnit" Type="Edm.String" MaxLength="3" sap:label="Scale Unit of Meas." sap:quickinfo="Condition Scale Unit of Measure" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="ConditionScaleBasisCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Scale Currency" sap:creatable="false" sap:updatable="false" sap:semantics="currency-code"/>
+                <Property Name="ConditionAlternativeCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Condition Currency" sap:quickinfo="Condition Currency (for Cumulation Fields)" sap:creatable="false" sap:updatable="false" sap:semantics="currency-code"/>
+                <Property Name="ConditionAmountInLocalCrcy" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="ConditionAlternativeCurrency" sap:label="Condition Value" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CndnIsRelevantForIntcoBilling" Type="Edm.Boolean" sap:label="Intercomp.Billing" sap:quickinfo="Condition for Intercompany Billing" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionIsManuallyChanged" Type="Edm.Boolean" sap:label="Changed Manually" sap:quickinfo="Condition Changed Manually" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CumulatedConditionBasisValue" Type="Edm.Decimal" Precision="24" Scale="9" sap:label="Condition Basis" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionIsForConfiguration" Type="Edm.Boolean" sap:label="UsedforVariantConfig" sap:quickinfo="Condition Used for Variant Configuration" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="VariantCondition" Type="Edm.String" MaxLength="26" sap:label="Variant Key" sap:quickinfo="Variant Condition Key" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_CreditMemoRequest" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_7C4AB3790A4DA8F1CEFB3F7CE63B526A" FromRole="FromRole_assoc_7C4AB3790A4DA8F1CEFB3F7CE63B526A" ToRole="ToRole_assoc_7C4AB3790A4DA8F1CEFB3F7CE63B526A"/>
+                <NavigationProperty Name="to_CreditMemoRequestItem" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_6947515A45E0125FA4E27739FCDFB5C2" FromRole="FromRole_assoc_6947515A45E0125FA4E27739FCDFB5C2" ToRole="ToRole_assoc_6947515A45E0125FA4E27739FCDFB5C2"/>
+            </EntityType>
+            <EntityType Name="A_CreditMemoReqItemTextType" sap:label="Item Text" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditMemoRequest"/>
+                    <PropertyRef Name="CreditMemoRequestItem"/>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="LongTextID"/>
+                </Key>
+                <Property Name="CreditMemoRequest" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Credit Memo Request" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreditMemoRequestItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Credit Memo Request Item" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="LongTextID" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Text ID"/>
+                <Property Name="LongText" Type="Edm.String" sap:label="String" sap:heading="" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="to_CreditMemoRequest" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_8C292D5E0432D69F41701F59F639F586" FromRole="FromRole_assoc_8C292D5E0432D69F41701F59F639F586" ToRole="ToRole_assoc_8C292D5E0432D69F41701F59F639F586"/>
+                <NavigationProperty Name="to_CreditMemoRequestItem" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_90A4D5169131C532E2010318D8576E86" FromRole="FromRole_assoc_90A4D5169131C532E2010318D8576E86" ToRole="ToRole_assoc_90A4D5169131C532E2010318D8576E86"/>
+            </EntityType>
+            <EntityType Name="A_CreditMemoReqPartnerType" sap:label="Header Partner" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditMemoRequest"/>
+                    <PropertyRef Name="PartnerFunction"/>
+                </Key>
+                <Property Name="CreditMemoRequest" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="SD Document" sap:quickinfo="Sales and Distribution Document Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PartnerFunction" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Partner Function"/>
+                <Property Name="PartnerFunctionInternalCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Partner Function" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="Personnel" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="ContactPerson" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Contact Person" sap:quickinfo="Number of Contact Person"/>
+                <Property Name="ReferenceBusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_CreditMemoRequest" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_7C55D99A38C9DC001823A75FA1D4C91B" FromRole="FromRole_assoc_7C55D99A38C9DC001823A75FA1D4C91B" ToRole="ToRole_assoc_7C55D99A38C9DC001823A75FA1D4C91B"/>
+            </EntityType>
+            <EntityType Name="A_CreditMemoReqPrcgElmntType" sap:label="Header Pricing Element" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditMemoRequest"/>
+                    <PropertyRef Name="PricingProcedureStep"/>
+                    <PropertyRef Name="PricingProcedureCounter"/>
+                </Key>
+                <Property Name="CreditMemoRequest" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PricingProcedureStep" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="NonNegative" sap:label="Step Number"/>
+                <Property Name="PricingProcedureCounter" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Condition Counter"/>
+                <Property Name="ConditionApplication" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Application" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="PricingDateTime" Type="Edm.String" MaxLength="14" sap:display-format="UpperCase" sap:label="Valid From" sap:quickinfo="Timestamp for Pricing" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PriceConditionDeterminationDte" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Condition Pricing Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionCalculationType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Calculation Type" sap:quickinfo="Calculation Type for Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionBaseValue" Type="Edm.Decimal" Precision="24" Scale="9" sap:label="Condition Basis" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionRateValue" Type="Edm.Decimal" Precision="24" Scale="9" sap:label="Amount" sap:quickinfo="Condition Amount or Percentage"/>
+                <Property Name="ConditionCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="ConditionQuantity" Type="Edm.Decimal" Precision="5" Scale="0" sap:unit="ConditionQuantityUnit" sap:label="Pricing Unit" sap:quickinfo="Condition Pricing Unit"/>
+                <Property Name="ConditionQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Condition Unit" sap:quickinfo="Condition Unit in the Document" sap:semantics="unit-of-measure"/>
+                <Property Name="ConditionToBaseQtyNmrtr" Type="Edm.Decimal" Precision="10" Scale="0" sap:label="Numerator" sap:quickinfo="Numerator for Converting to Base UoM" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionToBaseQtyDnmntr" Type="Edm.Decimal" Precision="10" Scale="0" sap:label="Denominator" sap:quickinfo="Denominator for Converting to Base UoM" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionCategory" Type="Edm.String" MaxLength="1" sap:label="Condition Category" sap:quickinfo="Condition Category (Examples: Tax, Freight, Price, Cost)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionIsForStatistics" Type="Edm.Boolean" sap:label="Statistical" sap:quickinfo="Condition is used for statistics" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PricingScaleType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Scale Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsRelevantForAccrual" Type="Edm.Boolean" sap:label="Accruals" sap:quickinfo="Condition is Relevant for Accrual  (e.g. Freight)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CndnIsRelevantForInvoiceList" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Invoice List Cond." sap:quickinfo="Condition for Invoice List" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionOrigin" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Condition Origin" sap:quickinfo="Origin of the Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsGroupCondition" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Group Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsGroupCondition_2" Type="Edm.Boolean" sap:label="Is Group Condition" sap:quickinfo="Condition Is a Group Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="AccessNumberOfAccessSequence" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Access" sap:quickinfo="Access sequence - Access number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionRecord" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Condition Record No." sap:quickinfo="Number of Condition Record" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionSequentialNumber" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Sequent.No. of Cond." sap:quickinfo="Sequential Number of the Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Code" sap:quickinfo="Tax on Sales/Purchases Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WithholdingTaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="W/Tax Code" sap:quickinfo="Withholding Tax Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CndnRoundingOffDiffAmount" Type="Edm.Decimal" Precision="6" Scale="3" sap:unit="TransactionCurrency" sap:label="Condition Rounding Difference" sap:quickinfo="Rounding-Off Difference of a Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="TransactionCurrency" sap:label="Condition Value" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <Property Name="ConditionControl" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Condition Control" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionInactiveReason" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Inactive Condition" sap:quickinfo="Condition is Inactive" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionClass" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Condition Class" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PrcgProcedureCounterForHeader" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="Condition Counter (Header)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FactorForConditionBasisValue" Type="Edm.Double" sap:label="Condition Factor" sap:quickinfo="Factor for Condition Base Value" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="StructureCondition" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Structure Condition" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PeriodFactorForCndnBasisValue" Type="Edm.Double" sap:label="Condition Factor" sap:quickinfo="Factor for Condition Basis (Period)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PricingScaleBasis" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Scale Basis" sap:quickinfo="Scale Basis Indicator" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionScaleBasisValue" Type="Edm.Decimal" Precision="24" Scale="9" sap:label="Scale Base Val." sap:quickinfo="Scale Base Value" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionScaleBasisUnit" Type="Edm.String" MaxLength="3" sap:label="Scale Unit of Meas." sap:quickinfo="Condition Scale Unit of Measure" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="ConditionScaleBasisCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Scale Currency" sap:creatable="false" sap:updatable="false" sap:semantics="currency-code"/>
+                <Property Name="ConditionAlternativeCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Condition Currency" sap:quickinfo="Condition Currency (for Cumulation Fields)" sap:creatable="false" sap:updatable="false" sap:semantics="currency-code"/>
+                <Property Name="ConditionAmountInLocalCrcy" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="ConditionAlternativeCurrency" sap:label="Condition Value" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CndnIsRelevantForIntcoBilling" Type="Edm.Boolean" sap:label="Intercomp.Billing" sap:quickinfo="Condition for Intercompany Billing" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionIsManuallyChanged" Type="Edm.Boolean" sap:label="Changed Manually" sap:quickinfo="Condition Changed Manually" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CumulatedConditionBasisValue" Type="Edm.Decimal" Precision="24" Scale="9" sap:label="Condition Basis" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConditionIsForConfiguration" Type="Edm.Boolean" sap:label="UsedforVariantConfig" sap:quickinfo="Condition Used for Variant Configuration" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="VariantCondition" Type="Edm.String" MaxLength="26" sap:label="Variant Key" sap:quickinfo="Variant Condition Key" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_CreditMemoRequest" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_8056320F01D748D62F5E32ED0A51B657" FromRole="FromRole_assoc_8056320F01D748D62F5E32ED0A51B657" ToRole="ToRole_assoc_8056320F01D748D62F5E32ED0A51B657"/>
+            </EntityType>
+            <EntityType Name="A_CreditMemoReqSubsqntProcFlowType" sap:label="Header Subsequent Process Flow" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditMemoRequest"/>
+                    <PropertyRef Name="SubsequentDocument"/>
+                </Key>
+                <Property Name="CreditMemoRequest" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Preceding Document" sap:quickinfo="Preceding sales and distribution document"/>
+                <Property Name="SubsequentDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Subsequent Document" sap:quickinfo="Subsequent Sales and Distribution Document"/>
+                <Property Name="SubsequentDocumentCategory" Type="Edm.String" MaxLength="4" sap:label="Subsequent Doc. Cat." sap:quickinfo="Document Category of Subsequent Document"/>
+                <Property Name="ProcessFlowLevel" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Level" sap:quickinfo="Level of the document flow record"/>
+                <Property Name="OverallBillingStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="SD Billing Status"/>
+                <Property Name="OverallSDProcessStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Overall Status" sap:quickinfo="Overall Processing Status (Header/All Items)" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RelatedProcFlowDocStsFieldName" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Field Name" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Creation Date"/>
+                <Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:label="Time" sap:quickinfo="Entry time"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Changed On"/>
+                <NavigationProperty Name="to_CreditMemoRequest" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_7650DAC5CF9BB95497434B177C4F64D1" FromRole="FromRole_assoc_7650DAC5CF9BB95497434B177C4F64D1" ToRole="ToRole_assoc_7650DAC5CF9BB95497434B177C4F64D1"/>
+            </EntityType>
+            <EntityType Name="A_CreditMemoReqTextType" sap:label="Header Text" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditMemoRequest"/>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="LongTextID"/>
+                </Key>
+                <Property Name="CreditMemoRequest" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Credit Memo Request" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="LongTextID" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Text ID"/>
+                <Property Name="LongText" Type="Edm.String" sap:label="String" sap:heading="" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="to_CreditMemoRequest" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_B3BAD9C9F049C79F67B6E023A0347984" FromRole="FromRole_assoc_B3BAD9C9F049C79F67B6E023A0347984" ToRole="ToRole_assoc_B3BAD9C9F049C79F67B6E023A0347984"/>
+            </EntityType>
+            <EntityType Name="A_CreditMemoRequestType" sap:label="Credit Memo Request Header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditMemoRequest"/>
+                </Key>
+                <Property Name="CreditMemoRequest" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Credit Memo Request"/>
+                <Property Name="CreditMemoRequestType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Document Type"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="OrganizationDivision" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="SalesGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Sales Group"/>
+                <Property Name="SalesOffice" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Office"/>
+                <Property Name="SalesDistrict" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Sales District"/>
+                <Property Name="SoldToParty" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sold-to Party"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Creation Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" ConcurrencyMode="Fixed" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PurchaseOrderByCustomer" Type="Edm.String" MaxLength="35" sap:label="Customer Reference"/>
+                <Property Name="PurchaseOrderByShipToParty" Type="Edm.String" MaxLength="35" sap:label="Customer Reference (Ship-to Party)" sap:quickinfo="Ship-to Party's Customer Reference"/>
+                <Property Name="CustomerPurchaseOrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Purchase Order Type" sap:quickinfo="Customer Purchase Order Type"/>
+                <Property Name="CustPurOrdTypeByShipToParty" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Purchase Order Type (Ship-to Party)" sap:quickinfo="Ship-to Party Purchase Order Type"/>
+                <Property Name="CustomerPurchaseOrderDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Customer Reference Date"/>
+                <Property Name="CorrespncExternalReference" Type="Edm.String" MaxLength="12" sap:label="Your Reference"/>
+                <Property Name="CorrespncExtRefByShipToParty" Type="Edm.String" MaxLength="12" sap:label="Your Reference" sap:quickinfo="Ship-to Party Character"/>
+                <Property Name="CreditMemoRequestDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Document Date" sap:quickinfo="Document Date (Date Received/Sent)"/>
+                <Property Name="TotalNetAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="TransactionCurrency" sap:label="Net Value" sap:quickinfo="Net Value of the Sales Document in Document Currency" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <Property Name="SDDocumentReason" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Order Reason" sap:quickinfo="Order Reason (Reason for the Business Transaction)"/>
+                <Property Name="PricingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Pricing Date" sap:quickinfo="Date for Pricing and Exchange Rate"/>
+                <Property Name="CustomerTaxClassification1" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Alt.Tax Classific." sap:quickinfo="Alternative Tax Classification"/>
+                <Property Name="CustomerTaxClassification2" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Class.2 Customer" sap:quickinfo="Tax Classification 2 for Customer"/>
+                <Property Name="CustomerTaxClassification3" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Class.3 Customer" sap:quickinfo="Tax Classification 3 for Customer"/>
+                <Property Name="CustomerTaxClassification4" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Class.4 Customer" sap:quickinfo="Tax Classification 4 for Customer"/>
+                <Property Name="CustomerTaxClassification5" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Class.5 Customer" sap:quickinfo="Tax Classification 5 for Customer"/>
+                <Property Name="CustomerTaxClassification6" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Class.6 Customer" sap:quickinfo="Tax Classification 6 for Customer"/>
+                <Property Name="CustomerTaxClassification7" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Class.7 Customer" sap:quickinfo="Tax Classification 7 for Customer"/>
+                <Property Name="CustomerTaxClassification8" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Class.8 Customer" sap:quickinfo="Tax Classification 8 for Customer"/>
+                <Property Name="CustomerTaxClassification9" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Class.9 Customer" sap:quickinfo="Tax Classification 9 for Customer"/>
+                <Property Name="CustomerAccountAssignmentGroup" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Account Assignment Group for Customer" sap:quickinfo="Customer Account Assignment Group"/>
+                <Property Name="HeaderBillingBlockReason" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Billing Block" sap:quickinfo="Billing Block in SD Document"/>
+                <Property Name="IncotermsClassification" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Incoterms" sap:quickinfo="Incoterms (Part 1)"/>
+                <Property Name="IncotermsTransferLocation" Type="Edm.String" MaxLength="28" sap:label="Incoterms (Part 2)"/>
+                <Property Name="IncotermsLocation1" Type="Edm.String" MaxLength="70" sap:label="Incoterms Location 1"/>
+                <Property Name="IncotermsLocation2" Type="Edm.String" MaxLength="70" sap:label="Incoterms Location 2"/>
+                <Property Name="IncotermsVersion" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Incoterms Version"/>
+                <Property Name="CustomerPaymentTerms" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Terms of Payment" sap:quickinfo="Key for Terms of Payment"/>
+                <Property Name="PaymentMethod" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Payment Method"/>
+                <Property Name="BillingDocumentDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Billing Date"/>
+                <Property Name="ServicesRenderedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of Services Rendered" sap:quickinfo="Date on which services are rendered"/>
+                <Property Name="ReferenceSDDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Reference Document" sap:quickinfo="Document Number of Reference Document"/>
+                <Property Name="ReferenceSDDocumentCategory" Type="Edm.String" MaxLength="4" sap:label="Reference Document Category" sap:quickinfo="Category of Reference Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreditMemoReqApprovalReason" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Approval Request Reason" sap:quickinfo="Approval Request Reason ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SalesDocApprovalStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Approval Status" sap:quickinfo="Document Approval Status" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OverallSDProcessStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Overall Status" sap:quickinfo="Overall Processing Status (Header/All Items)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TotalCreditCheckStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Credit Status" sap:quickinfo="Overall Status of Credit Checks" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OverallSDDocumentRejectionSts" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Rejection Status" sap:quickinfo="Rejection Status (All Items)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OverallOrdReltdBillgStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Order-Related Billing Status" sap:quickinfo="Order-Related Billing Status (All Items)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="AccountingDocExternalReference" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Reference" sap:quickinfo="Reference Document Number"/>
+                <Property Name="AssignmentReference" Type="Edm.String" MaxLength="18" sap:label="Assignment" sap:quickinfo="Assignment Number"/>
+                <Property Name="YY1_BankAddress_SDH" Type="Edm.String" MaxLength="20" sap:label="Bank Address"/>
+                <Property Name="YY1_LRNumberBilling_SDH" Type="Edm.String" MaxLength="20" sap:label="LRNumberBilling"/>
+                <NavigationProperty Name="to_Item" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_9C2EF80E361135EB0B13D16E6DD060E7" FromRole="FromRole_assoc_9C2EF80E361135EB0B13D16E6DD060E7" ToRole="ToRole_assoc_9C2EF80E361135EB0B13D16E6DD060E7"/>
+                <NavigationProperty Name="to_Partner" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_24B55657FE6FFCE9DFEC74C8840AEA2D" FromRole="FromRole_assoc_24B55657FE6FFCE9DFEC74C8840AEA2D" ToRole="ToRole_assoc_24B55657FE6FFCE9DFEC74C8840AEA2D"/>
+                <NavigationProperty Name="to_PricingElement" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_ABE1457B604910B815A70764D97A90E8" FromRole="FromRole_assoc_ABE1457B604910B815A70764D97A90E8" ToRole="ToRole_assoc_ABE1457B604910B815A70764D97A90E8"/>
+                <NavigationProperty Name="to_SubsequentProcFlowDoc" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_269CA19743F786CCF98B08CC70EAF0E9" FromRole="FromRole_assoc_269CA19743F786CCF98B08CC70EAF0E9" ToRole="ToRole_assoc_269CA19743F786CCF98B08CC70EAF0E9"/>
+                <NavigationProperty Name="to_Text" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_2AE756D9399F5A4EA5D9532FC3F51AF7" FromRole="FromRole_assoc_2AE756D9399F5A4EA5D9532FC3F51AF7" ToRole="ToRole_assoc_2AE756D9399F5A4EA5D9532FC3F51AF7"/>
+            </EntityType>
+            <EntityType Name="A_CreditMemoRequestItemType" sap:label="Credit Memo Request Item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CreditMemoRequest"/>
+                    <PropertyRef Name="CreditMemoRequestItem"/>
+                </Key>
+                <Property Name="CreditMemoRequest" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Credit Memo Request" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreditMemoRequestItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="CreditMemoRequestItemText" sap:label="Item" sap:quickinfo="Credit Memo Request Item"/>
+                <Property Name="HigherLevelItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Higher-Level Item" sap:quickinfo="Higher-Level Item in Bill of Material Structures"/>
+                <Property Name="CreditMemoRequestItemCategory" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Item Category" sap:quickinfo="Sales Document Item Category"/>
+                <Property Name="CreditMemoRequestItemText" Type="Edm.String" MaxLength="40" sap:label="Item Description" sap:quickinfo="Short Text for Sales Order Item"/>
+                <Property Name="PurchaseOrderByCustomer" Type="Edm.String" MaxLength="35" sap:label="Customer Reference"/>
+                <Property Name="CustomerPurchaseOrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Purchase Order Type" sap:quickinfo="Customer Purchase Order Type"/>
+                <Property Name="CustPurOrdTypeByShipToParty" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Purchase Order Type (Ship-to Party)" sap:quickinfo="Ship-to Party Purchase Order Type"/>
+                <Property Name="PurchaseOrderByShipToParty" Type="Edm.String" MaxLength="35" sap:label="Customer Reference (Ship-to Party)" sap:quickinfo="Ship-to Party's Customer Reference"/>
+                <Property Name="CorrespncExternalReference" Type="Edm.String" MaxLength="12" sap:label="Your Reference"/>
+                <Property Name="CorrespncExtRefByShipToParty" Type="Edm.String" MaxLength="12" sap:label="Your Reference" sap:quickinfo="Ship-to Party Character"/>
+                <Property Name="UnderlyingPurchaseOrderItem" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Purchase Order Item" sap:quickinfo="Item Number of the Underlying Purchase Order"/>
+                <Property Name="UndrlgPurOrdItmByShipToParty" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Purchase Order Item" sap:quickinfo="Item Number of the Underlying Purchase Order"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="MaterialByCustomer" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Customer Material" sap:quickinfo="Material Number Used by Customer"/>
+                <Property Name="PricingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Pricing Date" sap:quickinfo="Date for Pricing and Exchange Rate"/>
+                <Property Name="RequestedQuantity" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="RequestedQuantitySAPUnit" sap:label="Requested Quantity"/>
+                <Property Name="RequestedQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Requested Qty Unit" sap:quickinfo="Unit of the Requested Quantity" sap:semantics="unit-of-measure"/>
+                <Property Name="RequestedQuantitySAPUnit" Type="Edm.String" MaxLength="3" sap:label="SAP Code Req. Qty" sap:quickinfo="SAP Unit Code for Requested Quantity" sap:semantics="unit-of-measure"/>
+                <Property Name="RequestedQuantityISOUnit" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code Req. Qty" sap:quickinfo="ISO Unit Code for Requested Quantity"/>
+                <Property Name="ItemGrossWeight" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="ItemWeightSAPUnit" sap:label="Gross Weight" sap:quickinfo="Gross Weight of the Item" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ItemNetWeight" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="ItemWeightSAPUnit" sap:label="Net Weight" sap:quickinfo="Net Weight of the Item" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ItemWeightUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Weight" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="ItemWeightSAPUnit" Type="Edm.String" MaxLength="3" sap:label="SAP Code Item Weight" sap:quickinfo="SAP Unit Code for Item Weight" sap:semantics="unit-of-measure"/>
+                <Property Name="ItemWeightISOUnit" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code Item Weight" sap:quickinfo="ISO Unit Code for Item Weight"/>
+                <Property Name="ItemVolume" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="ItemVolumeSAPUnit" sap:label="Volume" sap:quickinfo="Volume of the item" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ItemVolumeUnit" Type="Edm.String" MaxLength="3" sap:label="Volume Unit" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="ItemVolumeSAPUnit" Type="Edm.String" MaxLength="3" sap:label="SAP Code f Item Vol." sap:quickinfo="SAP Unit Code for Item Volume" sap:semantics="unit-of-measure"/>
+                <Property Name="ItemVolumeISOUnit" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Unit Item Volume" sap:quickinfo="ISO Unit Code for Item Volume"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:creatable="false" sap:updatable="false" sap:semantics="currency-code"/>
+                <Property Name="NetAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="TransactionCurrency" sap:label="Net Value" sap:quickinfo="Net Value of the Document Item in Document Currency" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Subtotal1Amount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="TransactionCurrency" sap:label="Subtotal 1" sap:quickinfo="Subtotal 1 from Pricing Procedure for Price Element" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Subtotal2Amount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="TransactionCurrency" sap:label="Subtotal 2" sap:quickinfo="Subtotal 2 from Pricing Procedure for Price Element" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Subtotal3Amount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="TransactionCurrency" sap:label="Subtotal 3" sap:quickinfo="Subtotal 3 from Pricing Procedure for Price Element" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Subtotal4Amount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="TransactionCurrency" sap:label="Subtotal 4" sap:quickinfo="Subtotal 4 from Pricing Procedure for Price Element" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Subtotal5Amount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="TransactionCurrency" sap:label="Subtotal 5" sap:quickinfo="Subtotal 5 from Pricing Procedure for Price Element" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Subtotal6Amount" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="TransactionCurrency" sap:label="Subtotal 6" sap:quickinfo="Subtotal 6 from Pricing Procedure for Price Element" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group"/>
+                <Property Name="MaterialPricingGroup" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Product Price Group"/>
+                <Property Name="ProductTaxClassification1" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Classifc. Mat." sap:quickinfo="Tax Classification for Material"/>
+                <Property Name="ProductTaxClassification2" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Classifc. Mat." sap:quickinfo="Tax Classification for Material"/>
+                <Property Name="ProductTaxClassification3" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Classifc. Mat." sap:quickinfo="Tax Classification for Material"/>
+                <Property Name="ProductTaxClassification4" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Classifc. Mat." sap:quickinfo="Tax Classification for Material"/>
+                <Property Name="ProductTaxClassification5" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Classifc. Mat." sap:quickinfo="Tax Classification for Material"/>
+                <Property Name="ProductTaxClassification6" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Classifc. Mat." sap:quickinfo="Tax Classification for Material"/>
+                <Property Name="ProductTaxClassification7" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Classifc. Mat." sap:quickinfo="Tax Classification for Material"/>
+                <Property Name="ProductTaxClassification8" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Classifc. Mat." sap:quickinfo="Tax Classification for Material"/>
+                <Property Name="ProductTaxClassification9" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Classifc. Mat." sap:quickinfo="Tax Classification for Material"/>
+                <Property Name="MatlAccountAssignmentGroup" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Acct Assmt Grp Mat." sap:quickinfo="Account Assignment Group for Material"/>
+                <Property Name="Batch" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Batch" sap:quickinfo="Batch Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:quickinfo="Plant (Own or External)"/>
+                <Property Name="IncotermsClassification" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Incoterms" sap:quickinfo="Incoterms (Part 1)"/>
+                <Property Name="IncotermsTransferLocation" Type="Edm.String" MaxLength="28" sap:label="Incoterms (Part 2)"/>
+                <Property Name="IncotermsLocation1" Type="Edm.String" MaxLength="70" sap:label="Incoterms Location 1"/>
+                <Property Name="IncotermsLocation2" Type="Edm.String" MaxLength="70" sap:label="Incoterms Location 2"/>
+                <Property Name="CustomerPaymentTerms" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Terms of Payment" sap:quickinfo="Key for Terms of Payment"/>
+                <Property Name="ItemBillingBlockReason" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Billing Block" sap:quickinfo="Billing Block for Item"/>
+                <Property Name="SalesDocumentRjcnReason" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Reason for Rejection" sap:quickinfo="Reason for Rejection of Sales Documents"/>
+                <Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:display-format="NonNegative" sap:label="WBS Element" sap:quickinfo="Work Breakdown Structure Element (WBS Element)"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit Center"/>
+                <Property Name="ReferenceSDDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Reference Document" sap:quickinfo="Document Number of Reference Document"/>
+                <Property Name="ReferenceSDDocumentItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Reference Item" sap:quickinfo="Item Number of the Reference Item"/>
+                <Property Name="SDProcessStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Overall Status" sap:quickinfo="Overall Processing Status (Item)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OrderRelatedBillingStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Order-Related Billing Status" sap:quickinfo="Order-Related Billing Status (Item)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ServicesRenderedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of Services Rendered" sap:quickinfo="Date on which services are rendered"/>
+                <Property Name="YY1_RTGSCode_SDI" Type="Edm.String" MaxLength="20" sap:label="RTGS Code"/>
+                <Property Name="YY1_BillingRefNo_SDI" Type="Edm.String" MaxLength="20" sap:label="Retro Billing Ref No"/>
+                <NavigationProperty Name="to_CreditMemoRequest" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_03E2B2623B8CF9B118D639E3F81F57C3" FromRole="FromRole_assoc_03E2B2623B8CF9B118D639E3F81F57C3" ToRole="ToRole_assoc_03E2B2623B8CF9B118D639E3F81F57C3"/>
+                <NavigationProperty Name="to_ItemSubsqntProcFlow" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_E693E5E59ED831F49D13EBE72188335D" FromRole="FromRole_assoc_E693E5E59ED831F49D13EBE72188335D" ToRole="ToRole_assoc_E693E5E59ED831F49D13EBE72188335D"/>
+                <NavigationProperty Name="to_Partner" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_508B853BC58F16A9A807088CD39892EA" FromRole="FromRole_assoc_508B853BC58F16A9A807088CD39892EA" ToRole="ToRole_assoc_508B853BC58F16A9A807088CD39892EA"/>
+                <NavigationProperty Name="to_PricingElement" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_F9ACAE89713660D6FDF25F28DB976C8D" FromRole="FromRole_assoc_F9ACAE89713660D6FDF25F28DB976C8D" ToRole="ToRole_assoc_F9ACAE89713660D6FDF25F28DB976C8D"/>
+                <NavigationProperty Name="to_Text" Relationship="API_CREDIT_MEMO_REQUEST_SRV.assoc_4E6A82B82FA71808C1F9D16653F00A93" FromRole="FromRole_assoc_4E6A82B82FA71808C1F9D16653F00A93" ToRole="ToRole_assoc_4E6A82B82FA71808C1F9D16653F00A93"/>
+            </EntityType>
+            <ComplexType Name="FunctionResult">
+                <Property Name="Boolean" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="assoc_9C2EF80E361135EB0B13D16E6DD060E7" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="FromRole_assoc_9C2EF80E361135EB0B13D16E6DD060E7"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType" Multiplicity="*" Role="ToRole_assoc_9C2EF80E361135EB0B13D16E6DD060E7"/>
+            </Association>
+            <Association Name="assoc_24B55657FE6FFCE9DFEC74C8840AEA2D" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="FromRole_assoc_24B55657FE6FFCE9DFEC74C8840AEA2D"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPartnerType" Multiplicity="*" Role="ToRole_assoc_24B55657FE6FFCE9DFEC74C8840AEA2D"/>
+            </Association>
+            <Association Name="assoc_ABE1457B604910B815A70764D97A90E8" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="FromRole_assoc_ABE1457B604910B815A70764D97A90E8"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType" Multiplicity="*" Role="ToRole_assoc_ABE1457B604910B815A70764D97A90E8"/>
+            </Association>
+            <Association Name="assoc_269CA19743F786CCF98B08CC70EAF0E9" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="FromRole_assoc_269CA19743F786CCF98B08CC70EAF0E9"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqSubsqntProcFlowType" Multiplicity="*" Role="ToRole_assoc_269CA19743F786CCF98B08CC70EAF0E9"/>
+            </Association>
+            <Association Name="assoc_2AE756D9399F5A4EA5D9532FC3F51AF7" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="FromRole_assoc_2AE756D9399F5A4EA5D9532FC3F51AF7"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqTextType" Multiplicity="*" Role="ToRole_assoc_2AE756D9399F5A4EA5D9532FC3F51AF7"/>
+            </Association>
+            <Association Name="assoc_03E2B2623B8CF9B118D639E3F81F57C3" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType" Multiplicity="1" Role="FromRole_assoc_03E2B2623B8CF9B118D639E3F81F57C3"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="ToRole_assoc_03E2B2623B8CF9B118D639E3F81F57C3"/>
+            </Association>
+            <Association Name="assoc_E693E5E59ED831F49D13EBE72188335D" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType" Multiplicity="1" Role="FromRole_assoc_E693E5E59ED831F49D13EBE72188335D"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CrdMmReqItemSubsqntProcFlowType" Multiplicity="*" Role="ToRole_assoc_E693E5E59ED831F49D13EBE72188335D"/>
+            </Association>
+            <Association Name="assoc_508B853BC58F16A9A807088CD39892EA" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType" Multiplicity="1" Role="FromRole_assoc_508B853BC58F16A9A807088CD39892EA"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPartnerType" Multiplicity="*" Role="ToRole_assoc_508B853BC58F16A9A807088CD39892EA"/>
+            </Association>
+            <Association Name="assoc_F9ACAE89713660D6FDF25F28DB976C8D" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType" Multiplicity="1" Role="FromRole_assoc_F9ACAE89713660D6FDF25F28DB976C8D"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType" Multiplicity="*" Role="ToRole_assoc_F9ACAE89713660D6FDF25F28DB976C8D"/>
+            </Association>
+            <Association Name="assoc_4E6A82B82FA71808C1F9D16653F00A93" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType" Multiplicity="1" Role="FromRole_assoc_4E6A82B82FA71808C1F9D16653F00A93"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemTextType" Multiplicity="*" Role="ToRole_assoc_4E6A82B82FA71808C1F9D16653F00A93"/>
+            </Association>
+            <Association Name="assoc_7650DAC5CF9BB95497434B177C4F64D1" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqSubsqntProcFlowType" Multiplicity="1" Role="FromRole_assoc_7650DAC5CF9BB95497434B177C4F64D1"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="ToRole_assoc_7650DAC5CF9BB95497434B177C4F64D1"/>
+            </Association>
+            <Association Name="assoc_8C292D5E0432D69F41701F59F639F586" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemTextType" Multiplicity="1" Role="FromRole_assoc_8C292D5E0432D69F41701F59F639F586"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="ToRole_assoc_8C292D5E0432D69F41701F59F639F586"/>
+            </Association>
+            <Association Name="assoc_90A4D5169131C532E2010318D8576E86" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemTextType" Multiplicity="1" Role="FromRole_assoc_90A4D5169131C532E2010318D8576E86"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType" Multiplicity="1" Role="ToRole_assoc_90A4D5169131C532E2010318D8576E86"/>
+            </Association>
+            <Association Name="assoc_7C55D99A38C9DC001823A75FA1D4C91B" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPartnerType" Multiplicity="1" Role="FromRole_assoc_7C55D99A38C9DC001823A75FA1D4C91B"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="ToRole_assoc_7C55D99A38C9DC001823A75FA1D4C91B"/>
+            </Association>
+            <Association Name="assoc_7C4AB3790A4DA8F1CEFB3F7CE63B526A" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType" Multiplicity="1" Role="FromRole_assoc_7C4AB3790A4DA8F1CEFB3F7CE63B526A"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="ToRole_assoc_7C4AB3790A4DA8F1CEFB3F7CE63B526A"/>
+            </Association>
+            <Association Name="assoc_6947515A45E0125FA4E27739FCDFB5C2" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType" Multiplicity="1" Role="FromRole_assoc_6947515A45E0125FA4E27739FCDFB5C2"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType" Multiplicity="1" Role="ToRole_assoc_6947515A45E0125FA4E27739FCDFB5C2"/>
+            </Association>
+            <Association Name="assoc_B3BAD9C9F049C79F67B6E023A0347984" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqTextType" Multiplicity="1" Role="FromRole_assoc_B3BAD9C9F049C79F67B6E023A0347984"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="ToRole_assoc_B3BAD9C9F049C79F67B6E023A0347984"/>
+            </Association>
+            <Association Name="assoc_8056320F01D748D62F5E32ED0A51B657" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType" Multiplicity="1" Role="FromRole_assoc_8056320F01D748D62F5E32ED0A51B657"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="ToRole_assoc_8056320F01D748D62F5E32ED0A51B657"/>
+            </Association>
+            <Association Name="assoc_00371EA4CD17DC06C27CE803445E5732" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPartnerType" Multiplicity="1" Role="FromRole_assoc_00371EA4CD17DC06C27CE803445E5732"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="ToRole_assoc_00371EA4CD17DC06C27CE803445E5732"/>
+            </Association>
+            <Association Name="assoc_749AE5630DD8B949AE636A242410823C" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPartnerType" Multiplicity="1" Role="FromRole_assoc_749AE5630DD8B949AE636A242410823C"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType" Multiplicity="1" Role="ToRole_assoc_749AE5630DD8B949AE636A242410823C"/>
+            </Association>
+            <Association Name="assoc_6FBC4316F00A43EC3B732CDA45234C45" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CrdMmReqItemSubsqntProcFlowType" Multiplicity="1" Role="FromRole_assoc_6FBC4316F00A43EC3B732CDA45234C45"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType" Multiplicity="1" Role="ToRole_assoc_6FBC4316F00A43EC3B732CDA45234C45"/>
+            </Association>
+            <Association Name="assoc_9523755F713DCB197998237B0AA34F56" sap:content-version="1">
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CrdMmReqItemSubsqntProcFlowType" Multiplicity="1" Role="FromRole_assoc_9523755F713DCB197998237B0AA34F56"/>
+                <End Type="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" Multiplicity="1" Role="ToRole_assoc_9523755F713DCB197998237B0AA34F56"/>
+            </Association>
+            <EntityContainer Name="API_CREDIT_MEMO_REQUEST_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="A_CrdMmReqItemSubsqntProcFlow" EntityType="API_CREDIT_MEMO_REQUEST_SRV.A_CrdMmReqItemSubsqntProcFlowType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_CreditMemoReqItemPartner" EntityType="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPartnerType" sap:content-version="1"/>
+                <EntitySet Name="A_CreditMemoReqItemPrcgElmnt" EntityType="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType" sap:creatable="false" sap:content-version="1"/>
+                <EntitySet Name="A_CreditMemoReqItemText" EntityType="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemTextType" sap:creatable="false" sap:content-version="1"/>
+                <EntitySet Name="A_CreditMemoReqPartner" EntityType="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPartnerType" sap:content-version="1"/>
+                <EntitySet Name="A_CreditMemoReqPrcgElmnt" EntityType="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType" sap:creatable="false" sap:content-version="1"/>
+                <EntitySet Name="A_CreditMemoReqSubsqntProcFlow" EntityType="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqSubsqntProcFlowType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_CreditMemoReqText" EntityType="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqTextType" sap:creatable="false" sap:content-version="1"/>
+                <EntitySet Name="A_CreditMemoRequest" EntityType="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType" sap:content-version="1"/>
+                <EntitySet Name="A_CreditMemoRequestItem" EntityType="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType" sap:content-version="1"/>
+                <AssociationSet Name="assoc_F9ACAE89713660D6FDF25F28DB976C8D" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_F9ACAE89713660D6FDF25F28DB976C8D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoRequestItem" Role="FromRole_assoc_F9ACAE89713660D6FDF25F28DB976C8D"/>
+                    <End EntitySet="A_CreditMemoReqItemPrcgElmnt" Role="ToRole_assoc_F9ACAE89713660D6FDF25F28DB976C8D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E693E5E59ED831F49D13EBE72188335D" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_E693E5E59ED831F49D13EBE72188335D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoRequestItem" Role="FromRole_assoc_E693E5E59ED831F49D13EBE72188335D"/>
+                    <End EntitySet="A_CrdMmReqItemSubsqntProcFlow" Role="ToRole_assoc_E693E5E59ED831F49D13EBE72188335D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9523755F713DCB197998237B0AA34F56" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_9523755F713DCB197998237B0AA34F56" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CrdMmReqItemSubsqntProcFlow" Role="FromRole_assoc_9523755F713DCB197998237B0AA34F56"/>
+                    <End EntitySet="A_CreditMemoRequest" Role="ToRole_assoc_9523755F713DCB197998237B0AA34F56"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B3BAD9C9F049C79F67B6E023A0347984" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_B3BAD9C9F049C79F67B6E023A0347984" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoReqText" Role="FromRole_assoc_B3BAD9C9F049C79F67B6E023A0347984"/>
+                    <End EntitySet="A_CreditMemoRequest" Role="ToRole_assoc_B3BAD9C9F049C79F67B6E023A0347984"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_00371EA4CD17DC06C27CE803445E5732" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_00371EA4CD17DC06C27CE803445E5732" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoReqItemPartner" Role="FromRole_assoc_00371EA4CD17DC06C27CE803445E5732"/>
+                    <End EntitySet="A_CreditMemoRequest" Role="ToRole_assoc_00371EA4CD17DC06C27CE803445E5732"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_4E6A82B82FA71808C1F9D16653F00A93" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_4E6A82B82FA71808C1F9D16653F00A93" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoRequestItem" Role="FromRole_assoc_4E6A82B82FA71808C1F9D16653F00A93"/>
+                    <End EntitySet="A_CreditMemoReqItemText" Role="ToRole_assoc_4E6A82B82FA71808C1F9D16653F00A93"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9C2EF80E361135EB0B13D16E6DD060E7" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_9C2EF80E361135EB0B13D16E6DD060E7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoRequest" Role="FromRole_assoc_9C2EF80E361135EB0B13D16E6DD060E7"/>
+                    <End EntitySet="A_CreditMemoRequestItem" Role="ToRole_assoc_9C2EF80E361135EB0B13D16E6DD060E7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_269CA19743F786CCF98B08CC70EAF0E9" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_269CA19743F786CCF98B08CC70EAF0E9" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoRequest" Role="FromRole_assoc_269CA19743F786CCF98B08CC70EAF0E9"/>
+                    <End EntitySet="A_CreditMemoReqSubsqntProcFlow" Role="ToRole_assoc_269CA19743F786CCF98B08CC70EAF0E9"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_24B55657FE6FFCE9DFEC74C8840AEA2D" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_24B55657FE6FFCE9DFEC74C8840AEA2D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoRequest" Role="FromRole_assoc_24B55657FE6FFCE9DFEC74C8840AEA2D"/>
+                    <End EntitySet="A_CreditMemoReqPartner" Role="ToRole_assoc_24B55657FE6FFCE9DFEC74C8840AEA2D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_ABE1457B604910B815A70764D97A90E8" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_ABE1457B604910B815A70764D97A90E8" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoRequest" Role="FromRole_assoc_ABE1457B604910B815A70764D97A90E8"/>
+                    <End EntitySet="A_CreditMemoReqPrcgElmnt" Role="ToRole_assoc_ABE1457B604910B815A70764D97A90E8"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2AE756D9399F5A4EA5D9532FC3F51AF7" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_2AE756D9399F5A4EA5D9532FC3F51AF7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoRequest" Role="FromRole_assoc_2AE756D9399F5A4EA5D9532FC3F51AF7"/>
+                    <End EntitySet="A_CreditMemoReqText" Role="ToRole_assoc_2AE756D9399F5A4EA5D9532FC3F51AF7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_508B853BC58F16A9A807088CD39892EA" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_508B853BC58F16A9A807088CD39892EA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoRequestItem" Role="FromRole_assoc_508B853BC58F16A9A807088CD39892EA"/>
+                    <End EntitySet="A_CreditMemoReqItemPartner" Role="ToRole_assoc_508B853BC58F16A9A807088CD39892EA"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7C55D99A38C9DC001823A75FA1D4C91B" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_7C55D99A38C9DC001823A75FA1D4C91B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoReqPartner" Role="FromRole_assoc_7C55D99A38C9DC001823A75FA1D4C91B"/>
+                    <End EntitySet="A_CreditMemoRequest" Role="ToRole_assoc_7C55D99A38C9DC001823A75FA1D4C91B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_03E2B2623B8CF9B118D639E3F81F57C3" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_03E2B2623B8CF9B118D639E3F81F57C3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoRequestItem" Role="FromRole_assoc_03E2B2623B8CF9B118D639E3F81F57C3"/>
+                    <End EntitySet="A_CreditMemoRequest" Role="ToRole_assoc_03E2B2623B8CF9B118D639E3F81F57C3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_90A4D5169131C532E2010318D8576E86" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_90A4D5169131C532E2010318D8576E86" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoReqItemText" Role="FromRole_assoc_90A4D5169131C532E2010318D8576E86"/>
+                    <End EntitySet="A_CreditMemoRequestItem" Role="ToRole_assoc_90A4D5169131C532E2010318D8576E86"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_749AE5630DD8B949AE636A242410823C" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_749AE5630DD8B949AE636A242410823C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoReqItemPartner" Role="FromRole_assoc_749AE5630DD8B949AE636A242410823C"/>
+                    <End EntitySet="A_CreditMemoRequestItem" Role="ToRole_assoc_749AE5630DD8B949AE636A242410823C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8C292D5E0432D69F41701F59F639F586" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_8C292D5E0432D69F41701F59F639F586" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoReqItemText" Role="FromRole_assoc_8C292D5E0432D69F41701F59F639F586"/>
+                    <End EntitySet="A_CreditMemoRequest" Role="ToRole_assoc_8C292D5E0432D69F41701F59F639F586"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7C4AB3790A4DA8F1CEFB3F7CE63B526A" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_7C4AB3790A4DA8F1CEFB3F7CE63B526A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoReqItemPrcgElmnt" Role="FromRole_assoc_7C4AB3790A4DA8F1CEFB3F7CE63B526A"/>
+                    <End EntitySet="A_CreditMemoRequest" Role="ToRole_assoc_7C4AB3790A4DA8F1CEFB3F7CE63B526A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8056320F01D748D62F5E32ED0A51B657" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_8056320F01D748D62F5E32ED0A51B657" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoReqPrcgElmnt" Role="FromRole_assoc_8056320F01D748D62F5E32ED0A51B657"/>
+                    <End EntitySet="A_CreditMemoRequest" Role="ToRole_assoc_8056320F01D748D62F5E32ED0A51B657"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7650DAC5CF9BB95497434B177C4F64D1" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_7650DAC5CF9BB95497434B177C4F64D1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoReqSubsqntProcFlow" Role="FromRole_assoc_7650DAC5CF9BB95497434B177C4F64D1"/>
+                    <End EntitySet="A_CreditMemoRequest" Role="ToRole_assoc_7650DAC5CF9BB95497434B177C4F64D1"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6FBC4316F00A43EC3B732CDA45234C45" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_6FBC4316F00A43EC3B732CDA45234C45" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CrdMmReqItemSubsqntProcFlow" Role="FromRole_assoc_6FBC4316F00A43EC3B732CDA45234C45"/>
+                    <End EntitySet="A_CreditMemoRequestItem" Role="ToRole_assoc_6FBC4316F00A43EC3B732CDA45234C45"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6947515A45E0125FA4E27739FCDFB5C2" Association="API_CREDIT_MEMO_REQUEST_SRV.assoc_6947515A45E0125FA4E27739FCDFB5C2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_CreditMemoReqItemPrcgElmnt" Role="FromRole_assoc_6947515A45E0125FA4E27739FCDFB5C2"/>
+                    <End EntitySet="A_CreditMemoRequestItem" Role="ToRole_assoc_6947515A45E0125FA4E27739FCDFB5C2"/>
+                </AssociationSet>
+                <FunctionImport Name="releaseApprovalRequest" ReturnType="API_CREDIT_MEMO_REQUEST_SRV.FunctionResult" m:HttpMethod="POST">
+                    <Parameter Name="CreditMemoRequest" Type="Edm.String" Mode="In" MaxLength="11000"/>
+                </FunctionImport>
+                <FunctionImport Name="rejectApprovalRequest" ReturnType="API_CREDIT_MEMO_REQUEST_SRV.FunctionResult" m:HttpMethod="POST">
+                    <Parameter Name="CreditMemoRequest" Type="Edm.String" Mode="In" MaxLength="11000"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CrdMmReqItemSubsqntProcFlow" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>AccountingTransferStatus</PropertyPath>
+                                <PropertyPath>SDProcessStatus</PropertyPath>
+                                <PropertyPath>RelatedProcFlowDocStsFieldName</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequestItem"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>AccountingTransferStatus</PropertyPath>
+                                <PropertyPath>SDProcessStatus</PropertyPath>
+                                <PropertyPath>RelatedProcFlowDocStsFieldName</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqItemText" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LongText"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>LongText</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequestItem"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>LongText</PropertyPath>
+                                <PropertyPath>LongText</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqSubsqntProcFlow" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>OverallSDProcessStatus</PropertyPath>
+                                <PropertyPath>RelatedProcFlowDocStsFieldName</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>OverallSDProcessStatus</PropertyPath>
+                                <PropertyPath>RelatedProcFlowDocStsFieldName</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqText" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LongText"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>LongText</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>LongText</PropertyPath>
+                                <PropertyPath>LongText</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoValAddedSrvc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ValueAddedServiceLongText</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ValueAddedServiceLongText</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqItemPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequestItem"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqItemPrcgElmnt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequestItem"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqPrcgElmnt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoRequest" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Item"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Partner"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PricingElement"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SubsequentProcFlowDoc"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Text"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoRequestItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ItemSubsqntProcFlow"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Partner"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PricingElement"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Text"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ValueAddedService"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CrdMmReqItemSubsqntProcFlowType/AccountingTransferStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="BillingDocAcctgTransferStatus"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CrdMmReqItemSubsqntProcFlowType/SDProcessStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="SDProcessStatus"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPartnerType/PartnerFunction" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PartnerFunction"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType/ConditionCalculationType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionCalculationType"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType/ConditionCategory" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionCategory"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType/ConditionClass" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionClass"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType/ConditionControl" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionControl"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType/ConditionCurrency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType/ConditionInactiveReason" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionInactiveReason"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType/ConditionOrigin" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionOrigin"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType/StructureCondition" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PricingStructureCondition"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType/TransactionCurrency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPartnerType/PartnerFunction" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PartnerFunction"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType/ConditionCalculationType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionCalculationType"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType/ConditionCategory" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionCategory"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType/ConditionClass" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionClass"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType/ConditionControl" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionControl"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType/ConditionCurrency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType/ConditionInactiveReason" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionInactiveReason"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType/ConditionOrigin" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PriceConditionOrigin"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType/StructureCondition" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PricingStructureCondition"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqPrcgElmntType/TransactionCurrency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqSubsqntProcFlowType/OverallSDProcessStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="OverallSDProcessStatus"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/CustomerPurchaseOrderType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PurchaseOrderTypeByCustomer"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/IncotermsClassification" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="IncotermsClassification"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/ItemBillingBlockReason" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="BillingBlockReason"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/MaterialPricingGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="MaterialPricingGroup"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/OrderRelatedBillingStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="OrderRelatedBillingStatus"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/SDProcessStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="SDProcessStatus"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/SalesDocumentRjcnReason" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="SalesDocumentRjcnReason"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/TransactionCurrency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/CustomerAccountAssignmentGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="CustomerAccountAssignmentGroup"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/CustomerPurchaseOrderType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="PurchaseOrderTypeByCustomer"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/HeaderBillingBlockReason" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="BillingBlockReason"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/IncotermsClassification" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="IncotermsClassification"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/IncotermsVersion" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="IncotermsVersion"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/OverallOrdReltdBillgStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="OverallOrdReltdBillgStatus"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/OverallSDDocumentRejectionSts" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="OverallSDDocumentRejectionSts"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/OverallSDProcessStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="OverallSDProcessStatus"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/SDDocumentReason" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="SalesDocumentReason"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/SalesDocApprovalStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="SalesDocApprovalStatus"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/TotalCreditCheckStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="TotalCreditCheckStatus"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestType/TransactionCurrency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeTypeReference" String="Currency"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoReqItemPrcgElmntType/ConditionQuantity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Measures.UNECEUnit" Path="ConditionQuantityISOUnit"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/ItemGrossWeight" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Measures.UNECEUnit" Path="ItemWeightISOUnit"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/ItemNetWeight" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Measures.UNECEUnit" Path="ItemWeightISOUnit"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/ItemVolume" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Measures.UNECEUnit" Path="ItemVolumeISOUnit"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.A_CreditMemoRequestItemType/RequestedQuantity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Measures.UNECEUnit" Path="RequestedQuantityISOUnit"/>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CrdMmReqItemSubsqntProcFlow" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads the subsequent documents of all credit memo requests."/>
+                        <PropertyValue Property="LongDescription" String="Reads the process flow data for all credit memo requests and their subsequent documents in the system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a subsequent document of a credit memo request."/>
+                                <PropertyValue Property="LongDescription" String="Reads the process flow data of a specific subsequent document of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID and document relationship UUID."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request header data for a subsequent item of a credit memo request."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the credit memo request header data for a specific subsequent item of a credit memo request item. Consumers must pass the following key fields: credit memo request ID, credit memo request item number, and document relationship UUID."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequestItem"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request item data for a subsequent item of a credit memo request."/>
+                                            <PropertyValue Property="LongDescription" String="Read the item data for a specific subsequent item of credit memo request item. Consumers must pass the following key fields: credit memo request ID, credit memo request item number, and document relationship UUID."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqItemPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads the item partners for all credit memo requests."/>
+                        <PropertyValue Property="LongDescription" String="Reads the partner data from the items of all credit memo requests in the system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads the item partners of a specific credit memo request item."/>
+                                <PropertyValue Property="LongDescription" String="Reads the partner data for a specific item of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID, item number, and partner function."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Creates additional item partner for a specific credit memo request item with a specific partner function."/>
+                        <PropertyValue Property="LongDescription" String="Creates additional item partner with a specific partner function for a specific credit memo request item. Consumers must pass the following key fields: credit memo request ID, item number, and partner function."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates the item partners of a specific item and with a specific partner function in a specific credit memo request."/>
+                        <PropertyValue Property="LongDescription" String="Updates the item partners with a specific partner function of a specific credit memo request item. Consumers must pass the following key fields: credit memo request ID, item number, and partner function."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Deletes the item partners of a specific item and with a specific partner function in a specific credit memo request."/>
+                        <PropertyValue Property="LongDescription" String="Deletes the item partners with a specific partner function of a specific credit memo request item. Consumers must pass the following key fields: credit memo request ID, item number, and partner function."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request header for a specific partner function of a credit memo request item."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the credit memo request header data for a specific item partner function. Consumers must pass the following key fields: credit memo request ID, item number, and partner function."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequestItem"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request item for a specific partner function of a credit memo request item."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the credit memo request item data for a specific item partner function. Consumers must pass the following key fields: credit memo request ID, item number, and partner function."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqItemPrcgElmnt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads the item pricing elements of all credit memo requests."/>
+                        <PropertyValue Property="LongDescription" String="Reads the pricing element data from the items of all credit memo requests in the system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads the pricing element of a specific credit memo request item."/>
+                                <PropertyValue Property="LongDescription" String="Reads the pricing element data for a specific item of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID and item number."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates an item pricing element."/>
+                        <PropertyValue Property="LongDescription" String="Updates an item pricing element of a specific credit memo request item. Consumers must pass the following key fields: credit memo request ID, item number, pricing procedure step, and pricing procedure counter."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Deletes an item pricing element."/>
+                        <PropertyValue Property="LongDescription" String="Deletes an item pricing element of a specific credit memo request item. Consumers must pass the following key fields: credit memo request ID, item number, pricing procedure step, and pricing procedure counter."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request header for a specific pricing element."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the credit memo request header data for a specific pricing element of a specific credit memo request item. Consumers must pass the following key fields: credit memo request ID, item number, pricing procedure step, and pricing procedure counter."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequestItem"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request item for a specific pricing element."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the credit memo request item data for a specific pricing element of a specific credit memo request item. Consumers must pass the following key fields: credit memo request ID, item number, pricing procedure step, and pricing procedure counter."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqItemText" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads item texts of all credit memo requests."/>
+                        <PropertyValue Property="LongDescription" String="Reads the text data from the items of all credit memo requests in the system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific item text."/>
+                                <PropertyValue Property="LongDescription" String="Reads a specific item text in a specific language. Consumers must pass the following key fields: credit memo request ID, item number, language, and text ID."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates a specific item text."/>
+                        <PropertyValue Property="LongDescription" String="Updates a specific item text in a specific language. Consumers must pass the following key fields: credit memo request ID, sales order item number, language, and text ID."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Deletes a specific item text."/>
+                        <PropertyValue Property="LongDescription" String="Deletes a specific item text in a specific language. Consumers must pass the following key fields: credit memo request ID, item number, language, and text ID."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request header for a specific text of a credit memo request item."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the credit memo request header data for a specific text of a specific credit memo request item in a specific language. Consumers must pass the following key fields: credit memo request ID, item number, language, and text ID."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequestItem"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request item for a specific item text."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the credit memo request item data for a specific text in a specific language. Consumers must pass the following key fields: credit memo request ID, item number, language, and text ID."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads the header partners of all credit memo requests."/>
+                        <PropertyValue Property="LongDescription" String="Reads the partner data from the headers of all credit memo requests in the system. The data is relevant for all items for which no item-specific partners are maintained."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads the header partners of a specific credit memo request."/>
+                                <PropertyValue Property="LongDescription" String="Reads the business partner data from the header of a specific credit memo request. Consumers must pass the credit memo request ID (key field). The data is relevant for all items for which no item-specific partners are maintained."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Creates additional header partner for a specific credit memo request with a specific partner function."/>
+                        <PropertyValue Property="LongDescription" String="Creates additional header partner with a specific partner function for a specific credit memo request. Consumers must pass the following key fields: credit memo request ID and partner function."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates the header partners of a specific credit memo request with a specific partner function."/>
+                        <PropertyValue Property="LongDescription" String="Updates the data of partners with a specific partner function from the header of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID and partner function."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Deletes the header partners of a specific credit memo request with a specific partner function."/>
+                        <PropertyValue Property="LongDescription" String="Deletes the data of partners with a specific partner function from the header of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID and partner function."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request header for a specific header partner."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the credit memo request header data for a specific header partner function. Consumers must pass the following key fields: partner function and the credit memo request ID."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqPrcgElmnt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads the header pricing elements of all credit memo requests."/>
+                        <PropertyValue Property="LongDescription" String="Reads the pricing element data from the headers of all credit memo requests in the system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads the header pricing element of a specific credit memo request."/>
+                                <PropertyValue Property="LongDescription" String="Reads the pricing element data from the header of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID, pricing procedure step, and pricing procedure counter."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates a header pricing element for a specific credit memo request."/>
+                        <PropertyValue Property="LongDescription" String="Updates the pricing element data from the header of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID, pricing procedure step, and pricing procedure counter."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Deletes a header pricing element for a specific credit memo request."/>
+                        <PropertyValue Property="LongDescription" String="Deletes the pricing element data from the header of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID, pricing procedure step, and pricing procedure counter."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request header for a specific pricing element."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the credit memo request header data for a specific pricing element. Consumers must pass the following key fields: credit memo request ID, pricing procedure step, and pricing procedure counter."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqSubsqntProcFlow" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads the subsequent documents of all credit memo requests."/>
+                        <PropertyValue Property="LongDescription" String="Reads the process flow data for all credit memo requests and their subsequent documents in the system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a subsequent document of a credit memo request."/>
+                                <PropertyValue Property="LongDescription" String="Reads the process flow data of a specific subsequent document of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID and subsequent document ID."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request header data for a subsequent document of a credit memo request."/>
+                                            <PropertyValue Property="LongDescription" String="Read the credit memo request header data for a subsequent document of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID and subsequent document ID."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoReqText" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads the header texts of all credit memo requests."/>
+                        <PropertyValue Property="LongDescription" String="Reads the text data from the headers of all credit memo requests in the system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads a specific header text for a specific credit memo request."/>
+                                <PropertyValue Property="LongDescription" String="Reads the text data from the header of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID, language, and text ID."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates a specific header text for a specific credit memo request."/>
+                        <PropertyValue Property="LongDescription" String="Updates the text data from the header of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID, language, and text ID."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Deletes a specific header text for a specific sales order."/>
+                        <PropertyValue Property="LongDescription" String="Deletes the text data from the header of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID, language, and text ID."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request header for a specific header text."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the credit memo request header data for a specific header text. Consumers must pass the following key fields: credit memo request ID, language, and text ID."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoRequest" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads all credit memo request headers."/>
+                        <PropertyValue Property="LongDescription" String="Reads the header data of all credit memo requests in the system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads the header of a specific credit memo request."/>
+                                <PropertyValue Property="LongDescription" String="Reads the header data of a specific credit memo request. Consumers must pass the credit memo request ID (key field)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Creates a credit memo request."/>
+                        <PropertyValue Property="LongDescription" String="Creates a credit memo request header using deep insert requests. This means consumers can create a credit memo request with all possible sub-entities (for example, header partners or items)."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates a specific credit memo request."/>
+                        <PropertyValue Property="LongDescription" String="Updates the header data of a specific credit memo request. Consumers must pass the credit memo request ID (key field)."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Deletes a specific credit memo request."/>
+                        <PropertyValue Property="LongDescription" String="Deletes the header data of a specific credit memo request. Consumers must pass the credit memo request ID (key field)."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Item"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads all items of a specific credit memo request."/>
+                                            <PropertyValue Property="LongDescription" String="Reads all item data of a specific credit memo request. Consumers must pass the credit memo request ID (key field)."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Item"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Creates a credit memo request item for a specific credit memo request."/>
+                                            <PropertyValue Property="LongDescription" String="Creates a credit memo request item for a specific credit memo request using deep insert requests. This means consumers can create an item with all possible sub-entities (for example, item partners or item texts)."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Partner"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the header partners of a specific credit memo request."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the business partner data from the header of a specific credit memo request. Consumers must pass the credit memo request ID (key field). The data is relevant for all items for which no item-specific partners are maintained."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Partner"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Creates a header partner for a credit memo request."/>
+                                            <PropertyValue Property="LongDescription" String="Creates the partner data for a specific credit memo request header. Consumers must pass the credit memo request ID (key field). The data is relevant for all items for which no item-specific partners are maintained."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PricingElement"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the header pricing element of a specific credit memo request."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the pricing element data from the header of a specific credit memo request. Consumers must pass the credit memo request ID (key field)."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SubsequentProcFlowDoc"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the subsequent documents of specified credit memo requests."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the process flow data for a specific credit memo request and its subsequent documents. Consumers must pass the credit memo request ID (key field)."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Text"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the header texts of a specific credit memo request."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the text data from the header of a specific credit memo request. Consumers must pass the credit memo request ID (key field)."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Text"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Inserts the header texts of a specific credit memo request."/>
+                                            <PropertyValue Property="LongDescription" String="Inserts the text data from the header of a specific credit memo request. Consumers must pass the credit memo request ID (key field)."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities/A_CreditMemoRequestItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.ReadRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Reads all credit memo request items."/>
+                        <PropertyValue Property="LongDescription" String="Reads the item data of all credit memo requests in the system."/>
+                        <PropertyValue Property="ReadByKeyRestrictions">
+                            <Record>
+                                <PropertyValue Property="Description" String="Reads all items of a specific credit memo request."/>
+                                <PropertyValue Property="LongDescription" String="Reads all item data of a specific credit memo request. Consumers must pass the credit memo request ID (key field)."/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Creates a credit memo request item."/>
+                        <PropertyValue Property="LongDescription" String="Creates a credit memo request item using deep insert requests. This means consumers can create an item with all possible sub-entities (for example, item partners or item texts)."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Updates a specific credit memo request item."/>
+                        <PropertyValue Property="LongDescription" String="Updates the data of a specific credit memo request item. Consumers must pass the following key fields: credit memo request ID and item number."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Description" String="Deletes a specific credit memo request item."/>
+                        <PropertyValue Property="LongDescription" String="Deletes the data of a specific credit memo request item. Consumers must pass the following key fields: credit memo request ID and item number."/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreditMemoRequest"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the credit memo request header for a specific item."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the credit memo request header data for a specific item. Consumers must pass the following key fields: credit memo request ID and item number."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ItemSubsqntProcFlow"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the subsequent items of specified credit memo request items."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the process flow data of specific subsequent items of specific credit memo request items. Consumers must pass the following key fields: credit memo request ID, credit memo request item ID."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Partner"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the item partners of a specific credit memo request item."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the partner data for a specific item of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID and item number."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Partner"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Creates an item partner for a credit memo request item."/>
+                                            <PropertyValue Property="LongDescription" String="Creates the partner data for a specific item of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID and item number."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PricingElement"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the pricing element of a specific credit memo request item."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the pricing element data for a specific item of a specific credit memo request. Consumers must pass the following key fields: credit memo request ID and item number."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Text"/>
+                                    <PropertyValue Property="ReadRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Reads the text of a specific credit memo request item."/>
+                                            <PropertyValue Property="LongDescription" String="Reads the text data for a specific item. Consumers must pass the following key fields: credit memo request item ID and item number."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Text"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Description" String="Inserts the text of a specific credit memo request item."/>
+                                            <PropertyValue Property="LongDescription" String="Inserts the text data for a specific item. Consumers must pass the following key fields: credit memo request item ID and item number."/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="API_CREDIT_MEMO_REQUEST_SRV.API_CREDIT_MEMO_REQUEST_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

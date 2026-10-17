@@ -1,0 +1,52 @@
+{
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "^/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/(.*)$",
+      "target": "/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/$1",
+      "destination": "STD_DEST_CUST_APP",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/sap/opu/odata/sap/API_DEBIT_MEMO_REQUEST_SRV/(.*)$",
+      "target": "/sap/opu/odata/sap/API_DEBIT_MEMO_REQUEST_SRV/$1",
+      "destination": "STD_DEST_CUST_APP",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/sap/opu/odata/sap/API_SLSPRICINGCONDITIONRECORD_SRV/(.*)$",
+      "target": "/sap/opu/odata/sap/API_SLSPRICINGCONDITIONRECORD_SRV/$1",
+      "destination": "STD_DEST_CUST_APP",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/sap/(.*)$",
+      "target": "/sap/$1",
+      "destination": "STD_DEST_CUST_APP",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/resources/(.*)$",
+      "target": "/resources/$1",
+      "authenticationType": "none",
+      "destination": "ui5"
+    },
+    {
+      "source": "^/test-resources/(.*)$",
+      "target": "/test-resources/$1",
+      "authenticationType": "none",
+      "destination": "ui5"
+    },
+    {
+      "source": "^(.*)$",
+      "target": "$1",
+      "service": "html5-apps-repo-rt",
+      "authenticationType": "xsuaa"
+    }
+  ]
+}

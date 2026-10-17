@@ -1,0 +1,217 @@
+{
+  "_version": "1.80.0",
+  "sap.app": {
+    "id": "retrobillingapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.27.0",
+      "toolsId": "523f0462-b0f1-4379-bbbe-14ae0131d96c"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "sap/opu/odata/sap/Z_RETRO_BILL_SCRN_SRV_BIND/",
+        "type": "OData",
+        "settings": {
+          "annotations": ["annotation"],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "annotation": {
+        "uri": "annotations/annotations.xml",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "annotations/annotations.xml"
+        }
+      },
+      "pricingConditionService": {
+        "uri": "/sap/opu/odata/sap/API_SLSPRICINGCONDITIONRECORD_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/pricingConditionService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "creditMemoRequestService": {
+        "uri": "/sap/opu/odata/sap/API_CREDIT_MEMO_REQUEST_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/creditMemoRequestService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "debitMemoRequestService": {
+        "uri": "/sap/opu/odata/sap/API_DEBIT_MEMO_REQUEST_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/debitMemoRequestService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "retrobillingapp-manage": {
+          "semanticObject": "retrobillingapp",
+          "action": "manage",
+          "title": "{{retrobillingapp-manage.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.142.8",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.comp": {},
+        "sap.ui.table": {},
+        "sap.ui.export": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "retrobillingapp.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "pricingModel": {
+        "dataSource": "pricingConditionService",
+        "settings": {
+          "defaultBindingMode": "OneWay",
+          "defaultCountMode": "None"
+        }
+      },
+      "creditMemoRequestModel": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "dataSource": "creditMemoRequestService",
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "None",
+          "refreshAfterChange": false,
+          "useBatch": false
+        }
+      },
+      "debitMemoRequestModel": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "dataSource": "debitMemoRequestService",
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "None",
+          "refreshAfterChange": false,
+          "useBatch": false
+        }
+      },
+      "pricingConditionService": {
+        "dataSource": "pricingConditionService",
+        "preload": true,
+        "settings": {}
+      },
+      "creditMemoRequestService": {
+        "dataSource": "creditMemoRequestService",
+        "preload": true,
+        "settings": {}
+      },
+      "debitMemoRequestService": {
+        "dataSource": "debitMemoRequestService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "retrobillingapp.view",
+        "async": true,
+        "viewPath": "retrobillingapp.view"
+      },
+      "routes": [
+        {
+          "name": "Routeretrobillingapp",
+          "pattern": ":?query:",
+          "target": ["Targetretrobillingapp"]
+        },
+        {
+          "name": "RoutePostCrDr",
+          "pattern": "PostCrDr",
+          "target": ["TargetPostCrDr"]
+        }
+      ],
+      "targets": {
+        "Targetretrobillingapp": {
+          "id": "retrobillingapp",
+          "name": "retrobillingapp"
+        },
+        "TargetPostCrDr": {
+          "id": "PostCrDr",
+          "name": "PostCrDr"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "retrobillingapp.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "retrobillingapp"
+  }
+}

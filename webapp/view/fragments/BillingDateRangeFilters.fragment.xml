@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:filterBar="sap.ui.comp.filterbar"
+>
+    <filterBar:FilterGroupItem
+        groupName="_BASIC"
+        name="FromBillingDate"
+        label="Billing Date From w.e.f*"
+        visibleInFilterBar="true"
+    >
+        <filterBar:control>
+            <DatePicker
+                id="customFromBillingDate"
+                valueFormat="yyyy-MM-dd"
+                displayFormat="dd.MM.yyyy"
+                value="{filterModel>/fromBillingDate}"
+                change="onBillingDateChange"
+            />
+        </filterBar:control>
+    </filterBar:FilterGroupItem>
+
+    <filterBar:FilterGroupItem
+        groupName="_BASIC"
+        name="ToBillingDate"
+        label="Billing Date To w.e.t*"
+        visibleInFilterBar="true"
+    >
+        <filterBar:control>
+            <DatePicker
+                id="customToBillingDate"
+                valueFormat="yyyy-MM-dd"
+                displayFormat="dd.MM.yyyy"
+                value="{filterModel>/toBillingDate}"
+                change="onBillingDateChange"
+            />
+        </filterBar:control>
+    </filterBar:FilterGroupItem>
+</core:FragmentDefinition>

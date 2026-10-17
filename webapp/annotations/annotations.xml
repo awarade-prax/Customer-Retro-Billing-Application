@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="cds_z_retro_bill_scrn_srv_def.v1.Annotations"
+            xmlns="http://docs.oasis-open.org/odata/ns/edm">
+
+            <!-- ===================================================== -->
+            <!-- BillToPartyCode - distinct value help from CustomerVH -->
+            <!-- SearchSupported=false: Z_C_CUSTOMER_VH has no          -->
+            <!-- @Search.searchable annotation on the backend, so a     -->
+            <!-- server-side search request gets rejected with 501/     -->
+            <!-- CX_SADL_CONTRACT_VIOLATION on every keystroke.         -->
+            <!-- ===================================================== -->
+            <Annotations Target="cds_z_retro_bill_scrn_srv_def.RetroBillScreen1Type/BillToPartyCode">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Bill-to Party"/>
+                        <PropertyValue Property="CollectionPath" String="CustomerVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BillToPartyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CustomerCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <!-- ===================================================== -->
+            <!-- ShipToPartyCode - distinct value help from CustomerVH -->
+            <!-- ===================================================== -->
+            <Annotations Target="cds_z_retro_bill_scrn_srv_def.RetroBillScreen1Type/ShipToPartyCode">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Ship-to Party"/>
+                        <PropertyValue Property="CollectionPath" String="CustomerVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ShipToPartyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CustomerCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <!-- ===================================================== -->
+            <!-- SalesOrganization - distinct value help from SalesOrgVH -->
+            <!-- ===================================================== -->
+            <Annotations Target="cds_z_retro_bill_scrn_srv_def.RetroBillScreen1Type/SalesOrganization">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Organization"/>
+                        <PropertyValue Property="CollectionPath" String="SalesOrgVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                 <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganizationName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <!-- ===================================================== -->
+            <!-- Plant - distinct value help from PlantVH               -->
+            <!-- ===================================================== -->
+            <Annotations Target="cds_z_retro_bill_scrn_srv_def.RetroBillScreen1Type/Plant">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Plant"/>
+                        <PropertyValue Property="CollectionPath" String="PlantVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Plant"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <!-- ===================================================== -->
+            <!-- MaterialCode - distinct value help from MaterialVH     -->
+            <!-- ===================================================== -->
+            <Annotations Target="cds_z_retro_bill_scrn_srv_def.RetroBillScreen1Type/MaterialCode">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Product"/>
+                        <PropertyValue Property="CollectionPath" String="MaterialVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MaterialCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="MaterialCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

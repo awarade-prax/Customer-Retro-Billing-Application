@@ -1,0 +1,59 @@
+/* ============================================================
+ * Freeze "New Rate", "Rate Difference" and "Retro Billing Amount"
+ * on the right edge of #postCrDrTable (screen 2 / PostCrDr).
+ *
+ * These are the last 3 columns declared in PostCrDr.view.xml's
+ * <table:columns> (colNewRate, colRateDifference,
+ * colRetroBillingAmount), so :nth-last-child(-n+3) below always
+ * targets exactly those 3, in that order, with no column ID
+ * juggling needed - if you ever reorder the XML columns, reorder
+ * these rules (and the "right" offsets, which stack the 3 columns'
+ * own widths: 9rem + 8rem + 7rem, see the matching widths in the
+ * view) to match.
+ *
+ * sap.ui.table.Table has no built-in "freeze on the right" API
+ * (fixedColumnCount only freezes from the LEFT), so this uses
+ * CSS position:sticky on the header + body cells instead. The
+ * class names used here (sapUiTableHeaderCell / sapUiTableCell)
+ * are long-standing sap.ui.table render classes; re-check them if
+ * you upgrade to a much newer/older UI5 version and the freeze
+ * stops applying.
+ * ============================================================ */
+
+#postCrDrTable .sapUiTableCtrl th.sapUiTableHeaderCell:nth-last-child(-n+3),
+#postCrDrTable .sapUiTableCtrl td.sapUiTableCell:nth-last-child(-n+3) {
+    position: sticky;
+    z-index: 2;
+    background-color: #ffffff;
+}
+
+/* Header cells sit above the scrolling body, so they need a higher
+   z-index than the body's frozen cells. */
+#postCrDrTable .sapUiTableColHdrCnt th.sapUiTableHeaderCell:nth-last-child(-n+3) {
+    z-index: 3;
+    background-color: #f7f7f7;
+}
+
+/* Retro Billing Amount - rightmost column, flush against the edge. */
+#postCrDrTable :nth-last-child(1 of .sapUiTableHeaderCell, .sapUiTableCell) {
+    right: 0;
+}
+
+/* Fallback / explicit offsets (browsers without :nth-last-child(An+B of S) support -
+   Safari <18, older Chromium): repeat the same 3 selectors with fixed offsets
+   matching each column's own width from PostCrDr.view.xml. */
+#postCrDrTable th.sapUiTableHeaderCell:nth-last-child(1),
+#postCrDrTable td.sapUiTableCell:nth-last-child(1) {
+    right: 0;
+}
+
+#postCrDrTable th.sapUiTableHeaderCell:nth-last-child(2),
+#postCrDrTable td.sapUiTableCell:nth-last-child(2) {
+    right: 9rem; /* width of colRetroBillingAmount */
+}
+
+#postCrDrTable th.sapUiTableHeaderCell:nth-last-child(3),
+#postCrDrTable td.sapUiTableCell:nth-last-child(3) {
+    right: 17rem; /* width of colRetroBillingAmount (9rem) + colRateDifference (8rem) */
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.15);
+}

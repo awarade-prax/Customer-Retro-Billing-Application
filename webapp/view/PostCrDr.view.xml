@@ -1,0 +1,275 @@
+<mvc:View
+    id="postCrDrView"
+    controllerName="retrobillingapp.controller.PostCrDr"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+>
+    <Page
+        id="postCrDrPage"
+        title="{i18n>title}"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+        enableScrolling="false"
+    >
+        <content>
+            <VBox
+                id="postCrDrVBox"
+                fitContainer="true"
+                renderType="Bare"
+                height="100%"
+            >
+                <Title
+                    id="postCrDrHeading"
+                    text="POST CR/DR"
+                    level="H2"
+                    class="sapUiSmallMargin"
+                />
+
+                <!-- Sales Order CR/DR Date - mandatory, calendar value help, DD.MM.YYYY display -->
+                <HBox id="hbSalesOrderCrDrDate" class="sapUiSmallMargin" alignItems="Center">
+                    <Label
+                        id="lblSalesOrderCrDrDate"
+                        text="Sales Order CR/DR Date"
+                        required="true"
+                        labelFor="inpSalesOrderCrDrDate"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <DatePicker
+                        id="inpSalesOrderCrDrDate"
+                        value="{postModel>/salesOrderCrDrDate}"
+                        valueFormat="yyyy-MM-dd"
+                        displayFormat="dd.MM.yyyy"
+                        placeholder="DD.MM.YYYY"
+                        required="true"
+                        change="onSalesOrderCrDrDateChange"
+                        width="12rem"
+                    />
+                </HBox>
+
+                <!-- Show Only Retro Billing Value - Yes/No/All, default Yes.
+                     Changing this immediately re-filters the table (no Go
+                     button). The count next to it always reflects only the
+                     rows currently visible for whatever is selected. -->
+                <HBox id="hbShowOnlyRetroBillingValue" class="sapUiSmallMarginBegin sapUiSmallMarginBottom" alignItems="Center" wrap="Wrap">
+                    <Label
+                        id="lblShowOnlyRetroBillingValue"
+                        text="Show Only Retro Billing Value"
+                        labelFor="selShowOnlyRetroBillingValue"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <Select
+                        id="selShowOnlyRetroBillingValue"
+                        selectedKey="{postModel>/showOnlyRetroBillingValue}"
+                        change="onShowOnlyRetroBillingValueChange"
+                        width="8rem"
+                        class="sapUiTinyMarginEnd"
+                    >
+                        <core:Item id="itemRetroYes" key="Y" text="Yes" />
+                        <core:Item id="itemRetroNo" key="N" text="No" />
+                        <core:Item id="itemRetroAll" key="A" text="All" />
+                    </Select>
+
+                    <Text
+                        id="txtRetroBillingCount"
+                        text="{postModel>/visibleCountDisplayText}"
+                        class="sapUiTinyMarginTop"
+                    />
+
+                    <ToolbarSpacer id="tbSpacerRetroBillingRow">
+                        <layoutData>
+                            <FlexItemData growFactor="1" />
+                        </layoutData>
+                    </ToolbarSpacer>
+
+                    <!-- Exports exactly what's currently visible in the table
+                         (i.e. whatever "Show Only Retro Billing Value" is
+                         currently filtering to) as an Excel file. Placed to
+                         the left of Post CR/DR. -->
+                    <Button
+                        id="btnExport"
+                        text="Export"
+                        type="Success"
+                        icon="sap-icon://excel-attachment"
+                        press="onExportPressed"
+                        class="sapUiTinyMarginEnd"
+                    />
+
+                    <Button
+                        id="btnPost"
+                        text="Post Sales Order"
+                        type="Emphasized"
+                        press="onPostPressed"
+                        class="sapUiSmallMarginEnd"
+                    />
+                </HBox>
+
+                <Text
+                    id="txtSalesOrderGroupSummary"
+                    text="{postModel>/salesOrderGroupSummaryText}"
+                    class="sapUiSmallMarginBegin sapUiTinyMarginBottom"
+                />
+
+                <table:Table
+                    id="postCrDrTable"
+                    rows="{postModel>/rows}"
+                    selectionMode="None"
+                    enableColumnReordering="false"
+                    class="sapUiSmallMarginBegin sapUiSmallMarginEnd"
+                >
+                    <table:layoutData>
+                        <FlexItemData growFactor="1" baseSize="0%" />
+                    </table:layoutData>
+                    <table:columns>
+                        <table:Column id="colSalesOrderGroupLabel" width="14rem">
+                            <Label text="Sales Order Group" />
+                            <table:template>
+                                <Text text="{postModel>SalesOrderGroupLabel}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colParentBillingDocument" width="10rem">
+                            <Label text="Parent Billing Document" />
+                            <table:template>
+                                <Text text="{postModel>ParentBillingDocument}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colBillingDocumentItem" width="8rem" hAlign="End">
+                            <Label text="Billing Document Item" />
+                            <table:template>
+                                <Text text="{postModel>BillingDocumentItem}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colODNNumber" width="9rem">
+                            <Label text="ODN Number" />
+                            <table:template>
+                                <Text text="{postModel>ODNNumber}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colSalesOrganization" width="7rem">
+                            <Label text="Sales Org" />
+                            <table:template>
+                                <Text text="{postModel>SalesOrganization}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colBillToPartyCode" width="9rem">
+                            <Label text="Bill To Party Code" />
+                            <table:template>
+                                <Text text="{postModel>BillToPartyCode}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colBillToPartyName" width="12rem">
+                            <Label text="Bill To Party Name" />
+                            <table:template>
+                                <Text text="{postModel>BillToPartyName}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colShipToPartyCode" width="9rem">
+                            <Label text="Ship To Party Code" />
+                            <table:template>
+                                <Text text="{postModel>ShipToPartyCode}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colShipToPartyName" width="12rem">
+                            <Label text="Ship To Party Name" />
+                            <table:template>
+                                <Text text="{postModel>ShipToPartyName}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colCustomerPONumber" width="9rem">
+                            <Label text="Customer PO Number" />
+                            <table:template>
+                                <Text text="{postModel>CustomerPONumber}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colMaterialCode" width="9rem">
+                            <Label text="Material Code" />
+                            <table:template>
+                                <Text text="{postModel>MaterialCode}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colMaterialDescription" width="12rem">
+                            <Label text="Material Description" />
+                            <table:template>
+                                <Text text="{postModel>MaterialDescription}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colCustomerMaterialCode" width="10rem">
+                            <Label text="Customer Material Code" />
+                            <table:template>
+                                <Text text="{postModel>CustomerMaterialCode}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colPlant" width="6rem">
+                            <Label text="Plant" />
+                            <table:template>
+                                <Text text="{postModel>Plant}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colBillingQuantity" width="8rem" hAlign="End">
+                            <Label text="Billing Quantity" />
+                            <table:template>
+                                <Text text="{postModel>BillingQuantity}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colOriginalRate" width="7rem" hAlign="End">
+                            <Label text="Original Rate" />
+                            <table:template>
+                                <Text text="{postModel>OriginalRate}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colNewRate" width="7rem" hAlign="End">
+                            <Label text="New Rate" />
+                            <table:template>
+                                <Text text="{postModel>NewRate}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colRateDifference" width="8rem" hAlign="End">
+                            <Label text="Rate Difference" />
+                            <table:template>
+                                <Text text="{postModel>RateDifference}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colOriginalDiscountPercent" width="9rem" hAlign="End">
+                            <Label text="Original Discount Percent" />
+                            <table:template>
+                                <Text text="{postModel>OriginalDiscountPercent}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colNewDiscountPercent" width="9rem" hAlign="End">
+                            <Label text="New Discount Percent" />
+                            <table:template>
+                                <Text text="{postModel>NewDiscountPercent}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colNewAmount" width="9rem" hAlign="End">
+                            <Label text="New Amount" />
+                            <table:template>
+                                <Text text="{postModel>NewAmount}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colNewDiscountAmount" width="9rem" hAlign="End">
+                            <Label text="New Discount Amount" />
+                            <table:template>
+                                <Text text="{postModel>NewDiscountAmount}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colItemNetValueTotal" width="9rem" hAlign="End">
+                            <Label text="Item Net Value (SUM F2/G2/L2)" />
+                            <table:template>
+                                <Text text="{postModel>ItemNetValueTotal}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="colRetroBillingAmount" width="9rem" hAlign="End">
+                            <Label text="Retro Billing Amount" />
+                            <table:template>
+                                <Text text="{postModel>RetroBillingAmount}" />
+                            </table:template>
+                        </table:Column>
+                    </table:columns>
+                </table:Table>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

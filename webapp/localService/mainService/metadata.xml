@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_z_retro_bill_scrn_srv_def" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="RetroBillScreen1Type" sap:label="Retro Billing 1st Screen" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BillingDocument"/>
+                    <PropertyRef Name="BillingDocumentItem"/>
+                </Key>
+                <Property Name="BillingDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Billing Document"/>
+                <Property Name="BillingDocumentItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Billing Document Item" sap:quickinfo="Billing Item"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="ParentBillingDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Parent Billing Document" sap:quickinfo="Billing Document"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="SortOrder" Type="Edm.String" MaxLength="1" sap:label="Sort Order"/>
+                <Property Name="BillingType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Billing Type"/>
+                <Property Name="CustomerPONumber" Type="Edm.String" MaxLength="35" sap:label="Customer PO Number" sap:quickinfo="Customer Reference"/>
+                <Property Name="MaterialCode" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Material Code" sap:quickinfo="Product"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:label="Material Description" sap:quickinfo="Product Description"/>
+                <Property Name="CustomerMaterialCode" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Customer Material Code" sap:quickinfo="Material Number Used by Customer"/>
+                <Property Name="CustomerMaterialName" Type="Edm.String" MaxLength="40" sap:label="Customer Material Description" sap:quickinfo="Customer Description of Material"/>
+                <Property Name="BillToPartyCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Bill-To Party Code" sap:quickinfo="Bill-to Party"/>
+                <Property Name="BillToPartyName" Type="Edm.String" MaxLength="80" sap:label="Bill-To Party Name" sap:quickinfo="Name of Customer"/>
+                <Property Name="ShipToPartyCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ship-To Party Code" sap:quickinfo="Ship-to Party"/>
+                <Property Name="ShipToPartyName" Type="Edm.String" MaxLength="80" sap:label="Ship-To Party Name" sap:quickinfo="Name of Customer"/>
+                <Property Name="ODNNumber" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="ODN Number" sap:quickinfo="Reference Document Number"/>
+                <Property Name="BillingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Billing Date"/>
+                <Property Name="CRDRNumber" Type="Edm.String" MaxLength="10" sap:label="CR/DR Number"/>
+                <Property Name="BillingQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="Unit" sap:label="Billing Quantity" sap:quickinfo="Actual Invoiced Quantity"/>
+                <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measure" sap:quickinfo="Sales Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="OriginalRate" Type="Edm.Decimal" Precision="24" Scale="9" sap:unit="Currency" sap:variable-scale="true" sap:label="Original Rate" sap:quickinfo="Condition Amount or Percentage"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="ItemNetValue" Type="Edm.Decimal" Precision="17" Scale="3" sap:label="Item Net Value"/>
+                <Property Name="ItemNetValueTotal" Type="Edm.Decimal" Precision="17" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Item Net Value Total"/>
+                <Property Name="Discount" Type="Edm.Byte" sap:unit="Currency" sap:label="Discount"/>
+            </EntityType>
+            <EntityContainer Name="cds_z_retro_bill_scrn_srv_def_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="RetroBillScreen1" EntityType="cds_z_retro_bill_scrn_srv_def.RetroBillScreen1Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_z_retro_bill_scrn_srv_def.cds_z_retro_bill_scrn_srv_def_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_z_retro_bill_scrn_srv_def.cds_z_retro_bill_scrn_srv_def_Entities/RetroBillScreen1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_z_retro_bill_scrn_srv_def.cds_z_retro_bill_scrn_srv_def_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="/sap/opu/odata/sap/Z_RETRO_BILL_SCRN_SRV_BIND/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="/sap/opu/odata/sap/Z_RETRO_BILL_SCRN_SRV_BIND/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
